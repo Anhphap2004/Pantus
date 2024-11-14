@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Pantus.Models.TbEvent>
+@foreach (var p in Model)
+{
+    <div class="col-md-6 col-lg-3 wow bounceInUp" data-wow-delay="0.1s">
+        <div class="event-img position-relative">
+            <img class="img-fluid rounded w-100" src="~/assets/img/Event/@p.Image" alt="">
+            <div class="event-overlay d-flex flex-column p-4">
+                <h4 class="me-auto">@p.Title</h4>
+                <a href="~/assets/img/event-1.jpg" data-lightbox="event-1" class="my-auto"><i class="fas fa-search-plus text-dark fa-2x"></i></a>
+            </div>
+        </div>
+    </div>
+}

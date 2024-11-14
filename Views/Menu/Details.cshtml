@@ -1,0 +1,123 @@
+﻿@model TbMenuItem
+@{
+    List<TbMenuReview> MenuReview = ViewBag.MenuReview;
+    List<TbMenuItem> MenuRelated = ViewBag.MenuRelated;
+
+}
+  <!-- Chi tiết món ăn -->
+<div class="product-detail-section">
+    <div class="container">
+        <div class="product-detail-content">
+            <div class="product-image-gallery">
+                <!-- Hình ảnh chính của món ăn -->
+                <div class="main-image">
+                    <img src="~/assets/img/food/largefood/@Model.Image" alt="Hình Ảnh Món Ăn">
+                </div>
+                <!-- Thumbnail ảnh món ăn -->
+                <div class="image-thumbnails">
+                    @foreach (var p in MenuRelated)
+                    {
+                    <img src="~/assets/img/food/largefood/@p.Image" alt="Hình Ảnh Món Ăn">
+
+                    }
+                 
+                </div>
+            </div>
+
+            <div class="product-info">
+                <!-- Tên món ăn -->
+                <h2 class="product-title">@Model.Title</h2>
+
+                <!-- Giá món ăn -->
+                <div class="price-section">
+                    <span class="new-price">@Model.Price VNĐ</span>
+                    <span class="old-price">@Model.PriceSale VNĐ</span>
+                </div>
+
+                <!-- Đánh giá món ăn -->
+                <div class="rating-review">
+                    <div class="rating">
+                        @for(var i =0; i< Model.Star;i++)
+                        {
+     <i class="fas fa-star"></i>
+                        
+                        }
+                   
+                    </div>
+                    <span>(@MenuReview.Count() đánh giá của khách hàng)</span>
+                </div>
+
+                <!-- Mô tả món ăn -->
+                <div class="description">
+                    <p>
+                        @Model.Detail
+                    </p>
+                </div>
+
+                <!-- Chọn số lượng và nút mua hàng -->
+                <div class="quantity-cart">
+                    <label for="quantity">Số lượng:</label>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button class="add-to-cart">Thêm vào giỏ hàng</button>
+                </div>
+
+                <!-- Danh mục món ăn -->
+                <div class="product-category">
+                    <span>Danh Mục: </span>
+                    <a href="#">Món Ăn Ngon</a>, <a href="#">Đồ Nhậu</a>
+                </div>
+
+                <!-- Thẻ sản phẩm -->
+                <div class="product-tags">
+                    <span>Thẻ: </span>
+                    <a href="#">Đồ Ăn</a>, <a href="#">Ẩm Thực</a>, <a href="#">Món chính</a>
+                </div>
+
+                <!-- Chia sẻ trên mạng xã hội -->
+                <div class="social-share">
+                    <span>Chia sẻ: </span>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bình luận -->
+<!-- Khu vực review sản phẩm -->
+<div class="product-reviews-section">
+    <h2 class="product-reviews-title">Khách Hàng Đánh Giá</h2>
+    <!-- Một review -->
+    @foreach(var p in MenuReview)
+    {
+    <div class="review-item">
+        
+            <img src="~/assets/img/userreview/@p.Image" alt="Reviewer Avatar" class="review-avatar">
+        <div class="review-content">
+            <span class="reviewer-name">@p.Name</span>
+            <span class="review-date">@p.CreatedDate</span>
+            <div class="review-rating">
+                @for(var i = 0; i< p.Rating; i++ )
+                {
+                <i class="fas fa-star"></i>
+                }
+            </div>
+            <div class="review-text">
+                <p>@p.Detail</p>
+                </div>
+        </div>
+    </div>
+    }
+    <div class="add-review-section">
+        <h2 class="add-review-title">Write a Review</h2>
+        <form class="add-review-form" action="#" method="POST">
+            <input type="text" class="add-review-input" name="name" placeholder="Your Name" required>
+            <input type="email" class="add-review-input" name="email" placeholder="Your Email" required>
+            <textarea class="add-review-textarea" name="review" placeholder="Write your review here..." required></textarea>
+            <button type="submit" class="submit-review-button">Submit Review</button>
+        </form>
+    </div>
+</div>

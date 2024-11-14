@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Pantus.Models.TbMenu>
+@foreach (var p in Model)
+{
+    <a href="~/Home/@p.Alias" class="nav-item nav-link">@p.Title</a>
+
+}

@@ -1,0 +1,67 @@
+﻿@model TbBlog
+@{
+    List<TbBlogComment> blogComment = ViewBag.blogComment;
+    List<TbBlog> blogs = ViewBag.blogs;
+}
+<div class="container">
+    <article class="blog-detail">
+        <h1 class="blog-title">@Model.Title</h1>
+        <div class="blog-meta">
+            <span class="author">Written by @Model.CreatedBy</span>
+            <span class="date">@Model.CreatedDate</span>
+        </div>
+        <div class="blog-image-gallery">
+            @foreach(var i in blogs)
+            {
+                <img src="~/assets/img/Blog/@i.Image" alt="Blog Image 1">
+            }
+        </div>
+        <section class="blog-content">
+            <p>@Model.Description</p>
+            <img src="https://cdn.pixabay.com/photo/2017/08/27/03/24/cake-2685095_1280.jpg" alt="Blog Image 4" class="featured-image">
+            <p>
+                @Html.Raw(Model.Detail)
+            </p>
+            <blockquote>“Dành nhiều thời gian để đọc sách giúp bạn nâng cao trí thức”</blockquote>
+        </section>
+    </article>
+    <section class="comments mt-5">
+        <h2 class="text-center text-primary mb-4">Bình Luận Của Khách Hàng</h2>
+
+        <!-- Danh sách các bình luận -->
+        @foreach (var p in blogComment)
+        {
+            <div class="comment mb-4 p-3 border rounded shadow-sm">
+                <div class="comment-author mb-2">
+                    <img src="~/assets/img/UserReview/@p.Image" alt="Avatar" class="rounded-circle" width="50" height="50">
+                    <span class="ms-3 fs-5">@p.Name</span>
+                </div>
+                <p>@p.Detail</p>
+
+                <!-- Phản hồi -->
+                <div class="replies ms-4 mt-3">
+                    <!-- Phản hồi sẽ được hiển thị ở đây -->
+                </div>
+
+                <!-- Form phản hồi -->
+                <form class="mt-3" action="/addReply" method="post">
+                    <input type="hidden" name="commentId" value="@p.BlogId" />
+                    <input type="text" class="form-control mb-2" name="replyName" placeholder="Your Name" required>
+                    <textarea class="form-control mb-2" name="replyDetail" placeholder="Your Reply" required></textarea>
+                    <button type="submit" class="btn btn-outline-success">Submit Reply</button>
+                </form>
+            </div>
+        }
+
+        <!-- Form thêm bình luận -->
+        <div class="add-comment mt-5 p-3 border rounded shadow-sm">
+            <h3 class="text-center text-primary mb-4">Thêm Bình Luận</h3>
+            <form action="/addComment" method="post">
+                <input type="text" class="form-control mb-2" name="name" placeholder="Your Name" required>
+                <textarea class="form-control mb-3" name="detail" placeholder="Your Comment" required></textarea>
+                <button type="submit" class="btn btn-primary w-100">Submit Comment</button>
+            </form>
+        </div>
+    </section>
+
+</div>
