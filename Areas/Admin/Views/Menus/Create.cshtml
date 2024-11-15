@@ -1,0 +1,71 @@
+﻿@model Pantus.Models.TbMenu
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="mt-4 text-center text-primary" style="font-family: 'Playball', cursive; font-size: 36px;">Tạo Menu Mới</h1>
+        <hr class="w-25 mx-auto" style="border-top: 3px solid orange;">
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Create" class="p-4 border rounded shadow-sm" style="background-color: #fff8f0; border-color: orange;">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Tiêu Đề</label>
+                    <input asp-for="Title" class="form-control" style="border-color: orange;" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Alias" class="control-label">Alias</label>
+                    <input asp-for="Alias" class="form-control" style="border-color: orange;" />
+                    <span asp-validation-for="Alias" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">Mô Tả</label>
+                    <input asp-for="Description" class="form-control" style="border-color: orange;" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Levels" class="control-label">Mức</label>
+                    <input asp-for="Levels" class="form-control" style="border-color: orange;" />
+                    <span asp-validation-for="Levels" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ParentId" class="control-label">Menu Cha</label>
+                    <input asp-for="ParentId" class="form-control" style="border-color: orange;" />
+                    <span asp-validation-for="ParentId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Position" class="control-label">Vị Trí</label>
+                    <input asp-for="Position" class="form-control" style="border-color: orange;" />
+                    <span asp-validation-for="Position" class="text-danger"></span>
+                </div>
+
+                <div class="form-group form-check">
+                    <input class="form-check-input" asp-for="IsActive" style="border-color: orange;" />
+                    <label asp-for="IsActive" class="form-check-label text-success">Hiển Thị</label>
+                </div>
+
+                <div class="form-group text-center">
+                    <input type="submit" value="Tạo Mới" class="btn btn-outline-success px-4" />
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                <a asp-action="Index" class="btn btn-outline-danger">Quay Lại Danh Sách</a>
+            </div>
+        </div>
+    </div>
+</div>
+
