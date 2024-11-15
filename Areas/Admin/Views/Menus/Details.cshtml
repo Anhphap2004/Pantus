@@ -5,81 +5,54 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="text-primary" style="font-family: 'Playball', cursive; font-size: 36px;">Chi Tiết Menu Pantus</h2>
+        <hr class="w-25 mx-auto" style="border-top: 3px solid orange;">
+    </div>
 
-<div>
-    <h4>TbMenu</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Alias)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Alias)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Levels)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Levels)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ParentId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ParentId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Position)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Position)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModifiedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModifiedBy)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.MenuId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title text-center mb-4">Thông Tin Menu</h4>
+            <dl class="row">
+                <dt class="col-sm-4 font-weight-bold">Tiêu Đề:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Title)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Alias:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Alias)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Mô Tả:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Description)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Mức:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Levels)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Menu Cha:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.ParentId)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Vị Trí:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Position)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Ngày Tạo:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CreatedDate)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Người Tạo:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CreatedBy)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Ngày Sửa:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.ModifiedDate)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Người Sửa:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.ModifiedBy)</dd>
+
+                <dt class="col-sm-4 font-weight-bold">Hiện:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.IsActive)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-action="Edit" asp-route-id="@Model?.MenuId" class="btn btn-warning mr-2">Sửa</a>
+        <a asp-action="Index" class="btn btn-secondary">Quay Lại Danh Sách</a>
+    </div>
 </div>

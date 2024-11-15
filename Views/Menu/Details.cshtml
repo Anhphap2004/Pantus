@@ -1,26 +1,27 @@
 ﻿@model TbMenuItem
 @{
+
     List<TbMenuReview> MenuReview = ViewBag.MenuReview;
     List<TbMenuItem> MenuRelated = ViewBag.MenuRelated;
-
+    List<TbMenuCategory> menuCategories = ViewBag.menuCategories;
 }
-  <!-- Chi tiết món ăn -->
+<!-- Chi tiết món ăn -->
 <div class="product-detail-section">
     <div class="container">
         <div class="product-detail-content">
             <div class="product-image-gallery">
                 <!-- Hình ảnh chính của món ăn -->
                 <div class="main-image">
-                    <img src="~/assets/img/food/largefood/@Model.Image" alt="Hình Ảnh Món Ăn">
+                    <img src="@Model.Image" alt="Hình Ảnh Món Ăn">
                 </div>
                 <!-- Thumbnail ảnh món ăn -->
                 <div class="image-thumbnails">
                     @foreach (var p in MenuRelated)
                     {
-                    <img src="~/assets/img/food/largefood/@p.Image" alt="Hình Ảnh Món Ăn">
+                        <img src="@p.Image" alt="Hình Ảnh Món Ăn">
 
                     }
-                 
+
                 </div>
             </div>
 
@@ -30,19 +31,19 @@
 
                 <!-- Giá món ăn -->
                 <div class="price-section">
-                    <span class="new-price">@Model.Price VNĐ</span>
-                    <span class="old-price">@Model.PriceSale VNĐ</span>
+                    <span class="new-price">@string.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", Model.PriceSale)</span>
+                    <span class="old-price">@string.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", Model.Price)</span>
                 </div>
 
                 <!-- Đánh giá món ăn -->
                 <div class="rating-review">
                     <div class="rating">
-                        @for(var i =0; i< Model.Star;i++)
+                        @for (var i = 0; i < Model.Star; i++)
                         {
-     <i class="fas fa-star"></i>
-                        
+                            <i class="fas fa-star"></i>
+
                         }
-                   
+
                     </div>
                     <span>(@MenuReview.Count() đánh giá của khách hàng)</span>
                 </div>
@@ -57,15 +58,23 @@
                 <!-- Chọn số lượng và nút mua hàng -->
                 <div class="quantity-cart">
                     <label for="quantity">Số lượng:</label>
-                    <input type="number" id="quantity" value="1" min="1">
+                    <input type="number" id="quantity" value="1" min="1" max="@Model.Quantity">
                     <button class="add-to-cart">Thêm vào giỏ hàng</button>
                 </div>
 
+
                 <!-- Danh mục món ăn -->
-                <div class="product-category">
-                    <span>Danh Mục: </span>
-                    <a href="#">Món Ăn Ngon</a>, <a href="#">Đồ Nhậu</a>
-                </div>
+       
+                    @foreach (var p in menuCategories)
+                    {
+                        string sUrl = $"/Home/Menu";
+                        <div class="product-category">
+                            <span>Danh Mục: </span>
+                            <a href="@sUrl">@p.Title</a>
+                        </div>
+
+                    }
+
 
                 <!-- Thẻ sản phẩm -->
                 <div class="product-tags">
@@ -91,25 +100,25 @@
 <div class="product-reviews-section">
     <h2 class="product-reviews-title">Khách Hàng Đánh Giá</h2>
     <!-- Một review -->
-    @foreach(var p in MenuReview)
+    @foreach (var p in MenuReview)
     {
-    <div class="review-item">
-        
+        <div class="review-item">
+
             <img src="~/assets/img/userreview/@p.Image" alt="Reviewer Avatar" class="review-avatar">
-        <div class="review-content">
-            <span class="reviewer-name">@p.Name</span>
-            <span class="review-date">@p.CreatedDate</span>
-            <div class="review-rating">
-                @for(var i = 0; i< p.Rating; i++ )
-                {
-                <i class="fas fa-star"></i>
-                }
-            </div>
-            <div class="review-text">
-                <p>@p.Detail</p>
+            <div class="review-content">
+                <span class="reviewer-name">@p.Name</span>
+                <span class="review-date">@p.CreatedDate</span>
+                <div class="review-rating">
+                    @for (var i = 0; i < p.Rating; i++)
+                    {
+                        <i class="fas fa-star"></i>
+                    }
                 </div>
+                <div class="review-text">
+                    <p>@p.Detail</p>
+                </div>
+            </div>
         </div>
-    </div>
     }
     <div class="add-review-section">
         <h2 class="add-review-title">Write a Review</h2>

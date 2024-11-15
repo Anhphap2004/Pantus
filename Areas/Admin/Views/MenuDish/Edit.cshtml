@@ -1,0 +1,112 @@
+﻿@model Pantus.Models.TbMenuItem
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="text-primary" style="font-family: 'Playball', cursive; font-size: 36px;">
+            <i class="fas fa-plus-circle"></i> Sửa Sản Phẩm
+        </h1>
+        <hr class="w-25 mx-auto" style="border-top: 3px solid orange;">
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <form asp-action="Edit" class="p-4 border rounded shadow-sm" style="background-color: #fff8f0; border-color: orange;">
+                <input type="hidden" asp-for="MenuItemId" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-3"></div>
+                <!-- Tiêu đề -->
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"><i class="fas fa-heading"></i> Tiêu Đề</label>
+                    <input asp-for="Title" class="form-control border-orange" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <!-- Alias -->
+                <div class="form-group">
+                    <label asp-for="Alias" class="control-label"><i class="fas fa-link"></i> Alias</label>
+                    <input asp-for="Alias" class="form-control border-orange" />
+                    <span asp-validation-for="Alias" class="text-danger"></span>
+                </div>
+
+                <!-- Danh mục -->
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label"><i class="fas fa-list-alt"></i> Danh Mục</label>
+                    <select asp-for="CategoryId" class="form-control border-orange" asp-items="ViewBag.CategoryId">
+                        <option value="0" selected>  Chọn Danh Mục  </option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+
+                <!-- Mô tả -->
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"><i class="fas fa-file-alt"></i> Mô Tả</label>
+                    <textarea asp-for="Description" class="form-control border-orange" rows="3"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <!-- Chọn ảnh -->
+                <div class="form-group">
+                    <label asp-for="Image" class="control-label"><i class="fas fa-image"></i> Chọn Ảnh</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-success" onclick="openDialog()">Chọn Ảnh</button>
+                        </div>
+                        <input type="text" class="form-control border-orange" id="file_input" asp-for="Image" />
+                    </div>
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Detail" class="control-label">Chi Tiết</label>
+                    <textarea asp-for="Detail" class="form-control"></textarea>
+                    <span asp-validation-for="Detail" class="text-danger"></span>
+                </div>
+                <!-- Giá và giá giảm -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label"><i class="fas fa-dollar-sign"></i> Giá</label>
+                            <input asp-for="Price" class="form-control border-orange" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PriceSale" class="control-label"><i class="fas fa-tags"></i> Giá Giảm</label>
+                            <input asp-for="PriceSale" class="form-control border-orange" />
+                            <span asp-validation-for="PriceSale" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Số lượng -->
+                <div class="form-group">
+                    <label asp-for="Quantity" class="control-label"><i class="fas fa-boxes"></i> Số Lượng</label>
+                    <input asp-for="Quantity" class="form-control border-orange" />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+
+                <!-- Hiển thị -->
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsActive" /> Hiển Thị
+                    </label>
+                </div>
+
+                <!-- Nút tạo -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success px-4"><i class="fas fa-save"></i> Sửa Mới</button>
+                </div>
+            </form>
+
+            <!-- Nút quay lại -->
+            <div class="text-center mt-3">
+                <a asp-action="Index" class="btn btn-outline-danger"><i class="fas fa-arrow-left"></i> Quay Lại</a>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -30,6 +30,7 @@ namespace Pantus.Controllers
         public IActionResult Menu()
         {
             ViewBag.MenuCategories = _context.TbMenuCategories.ToList();
+            
             return View();
         }
         public IActionResult Booking()

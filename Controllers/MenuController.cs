@@ -31,6 +31,8 @@ namespace Pantus.Controllers
             }
             ViewBag.MenuReview = _context.TbMenuReviews.Where(i => i.MenuItemId == id && i.IsActive).ToList();
             ViewBag.MenuRelated = _context.TbMenuItems.Where(i => i.MenuItemId != id && i.CategoryId == menuItem.CategoryId).Take(5).OrderByDescending(i => i.MenuItemId).ToList();
+            ViewBag.MenuCategories = _context.TbMenuCategories.Where(i => i.CategoryId == menuItem.CategoryId && i.IsActive).ToList();
+
             return View(menuItem);
         }
     }

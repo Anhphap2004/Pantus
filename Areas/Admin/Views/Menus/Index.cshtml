@@ -8,7 +8,7 @@
 <h1 class="mt-4 text-center text-primary" style="font-family: 'Playball', cursive; font-size: 36px;">Danh sách Menu</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary mb-3">Thêm mới Menu</a>
+    <a type="button" asp-area="Admin" asp-controller="Menus" asp-action="Create" class="btn btn-primary mb-3">Thêm mới Menu</a>
 </p>
 
 <table class="table table-bordered table-hover table-striped">
@@ -46,9 +46,10 @@
                     }
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.MenuId" class="btn btn-sm btn-warning">Sửa</a>
-                    <a asp-action="Details" asp-route-id="@item.MenuId" class="btn btn-sm btn-info">Xem</a>
-                    <a asp-action="Delete" asp-route-id="@item.MenuId" class="btn btn-sm btn-danger"
+
+                    <a asp-area="Admin" asp-controller="Menus" asp-action="Edit" asp-route-id="@item.MenuId" class="btn btn-sm btn-warning">Sửa</a>
+                    <a asp-area="Admin" asp-controller="Menus" asp-action="Details" asp-route-id="@item.MenuId" class="btn btn-sm btn-info">Xem</a>
+                    <a asp-area="Admin" asp-controller="Menus" asp-action="Delete" asp-route-id="@item.MenuId" class="btn btn-sm btn-danger"
                        onclick="return confirm('Bạn có chắc chắn muốn xóa mục này?');">Xóa</a>
                 </td>
             </tr>
