@@ -1,0 +1,58 @@
+﻿@model TbEvent
+@{
+    List<TbEvent> differrentEvent = ViewBag.differrentEvent;
+}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Cột bên trái: Tiêu đề, hình ảnh và mô tả sự kiện -->
+        <div class="col-md-8">
+            <!-- Hình ảnh sự kiện -->
+            <div class="event-image mb-4">
+                <img src="@Model.Image" class="img-fluid rounded" alt="Sự kiện" style="width:800px; height: 500px;">
+            </div>
+
+            <!-- Tiêu đề và mô tả sự kiện -->
+            <div class="event-details mb-4">
+                <h1 class="event-title text-primary mb-3">@Model.Title</h1>
+                <p class="event-date text-muted">Ngày: <strong>@Model.ModifiedDate</strong></p>
+                <p class="event-location text-muted">Địa điểm: <strong>@Model.Location</strong></p>
+                <p class="event-description mt-4 text-danger">@Model.Description</p>
+            </div>
+        </div>
+
+        <!-- Cột bên phải: Xem thêm các sự kiện khác -->
+        <div class="col-md-4">
+            <div class="other-events">
+                <h3 class="mb-4 text-center">Xem Thêm Các Sự Kiện Khác</h3>
+                <ul class="list-group">
+                    @foreach (var p in differrentEvent)
+                    {
+                        String sUrl = $"/event/{p.EventId}.html";
+                        <li class="list-group-item d-flex align-items-center">
+                            <img src="@p.Image" class="img-fluid rounded me-3" style="width: 100px; height: 80px;" alt="Sự kiện 1">
+
+                            <div>
+                                <a href="@sUrl">@p.Title</a> - <small>Ngày: @(p.ModifiedDate.HasValue ? p.ModifiedDate.Value.ToString("dd/MM/yyyy") : "N/A")</small>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phần Chi Tiết Sự Kiện -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="event-detail">
+                <h2 class="text-success">🥙🍨 Thông Tin Chi Tiết</h2>
+                <p>@Html.Raw(Model.Details)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nút đăng ký tham gia -->
+    <div class="text-center mt-5">
+        <button class="btn btn-primary btn-lg">Đăng Ký Tham Gia</button>
+    </div>
+</div>

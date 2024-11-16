@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Pantus.Models.TbEvent>
+
+@{
+    ViewData["Title"] = "Danh Sách Sự Kiện";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="text-primary" style="font-family: 'Playball', cursive; font-size: 36px;">Danh Sách Sự Kiện</h2>
+        <hr class="w-25 mx-auto" style="border-top: 3px solid orange;">
+    </div>
+
+    <div class="text-right mb-3">
+        <a asp-action="Create" class="btn btn-success">+ Thêm Sự Kiện Mới</a>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>STT</th>
+                <th>Tên Sự Kiện</th>
+                <th>Người Tạo</th>
+                <th>Ảnh</th>
+                <th>Địa Chỉ</th>
+                <th>Hiện</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1;
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td> 
+                    <td>@Html.DisplayFor(modelItem => item.CreatedBy)</td>
+                    <td>
+                        <img src="@item.Image" alt="@item.Title" style="width: 50px; height: auto; border-radius: 5px;" />
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Location)</td>
+                    <td>
+                        @if (item.IsActive)
+                        {
+                            <span class="badge bg-success text-white px-3 py-2">Đang Hiển Thị</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger text-white px-3 py-2">Không Hiển Thị</span>
+                        }
+        
+                    </td>
+                    <td>
+                        <a asp-area="Admin" asp-controller="Events" asp-action="Edit" asp-route-id="@item.EventId" class="btn btn-sm btn-warning">Sửa</a>
+                        <a asp-area="Admin" asp-controller="Events" asp-action="Details" asp-route-id="@item.EventId" class="btn btn-sm btn-info">Chi Tiết</a>
+                        <a asp-area="Admin" asp-controller="Events" asp-action="Delete" asp-route-id="@item.EventId" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

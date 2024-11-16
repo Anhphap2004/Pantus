@@ -24,4 +24,6 @@ public partial class TbEvent
     public bool IsActive { get; set; }
 
     public string? Image { get; set; }
+
+    public string? Details { get; set; }
 }

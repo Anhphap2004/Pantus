@@ -171,6 +171,7 @@ public partial class PantusContext : DbContext
             entity.Property(e => e.ModifiedBy).HasMaxLength(150);
             entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
             entity.Property(e => e.Title).HasMaxLength(255);
+            entity.Property(e => e.Details).HasMaxLength(int.MaxValue);
         });
 
         modelBuilder.Entity<TbInvoice>(entity =>
