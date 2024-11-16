@@ -47,6 +47,11 @@ namespace Pantus.Controllers
             ViewBag.Services = _context.TbServices.ToList();
             return View();
         }
+        public IActionResult phap()
+        {
+            ViewBag.Services = _context.TbServices.ToList();
+            return View();
+        }
 
         public IActionResult Privacy()
         {

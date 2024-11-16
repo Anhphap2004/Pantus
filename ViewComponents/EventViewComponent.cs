@@ -17,7 +17,7 @@ namespace Pantus.ViewComponents
         {
             var events = await _context.TbEvents
                 .Where(e => e.IsActive)
-                .OrderByDescending(e => e.CreatedDate) 
+                .OrderByDescending(e => e.EventId) 
                 .ToListAsync();
 
             return View(events); 

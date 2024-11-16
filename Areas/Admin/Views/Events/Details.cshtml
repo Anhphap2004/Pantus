@@ -5,75 +5,85 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<div class="container mt-5">
+    <h1 class="text-center text-primary" style="font-family: 'Playball', cursive; font-size: 36px;">Chi Tiết Sự Kiện</h1>
+    <div class="card shadow p-4 mt-4">
+        <h4 class="text-center text-secondary" style="font-family: 'Playball', cursive; font-size: 36px;">Pantus PNT</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4 text-end text-success fw-bold">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd class="col-sm-8 text-start text-dark">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-<div>
-    <h4>TbEvent</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModifiedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModifiedBy)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Details)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Details)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.EventId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+            <dt class="col-sm-4 text-end text-success fw-bold">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-8 text-start text-dark">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt class="col-sm-4 text-end text-success fw-bold">
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+            <dd class="col-sm-8 text-start text-dark">
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+
+            <dt class="col-sm-4 text-end text-success fw-bold">
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+            <dd class="col-sm-8 text-start text-dark">
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+
+            <dt class="col-sm-4 text-end text-success fw-bold">
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+            <dd class="col-sm-8 text-start text-dark">
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+
+            <dt class="col-sm-4 text-end text-success fw-bold">
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </dt>
+            <dd class="col-sm-8 text-start text-dark">
+                @Html.DisplayFor(model => model.ModifiedDate)
+            </dd>
+
+            <dt class="col-sm-4 text-end text-success fw-bold">
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </dt>
+            <dd class="col-sm-8 text-start text-dark">
+                @Html.DisplayFor(model => model.ModifiedBy)
+            </dd>
+
+            <dt class="col-sm-4 text-end text-success fw-bold">
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+            <dd class="col-sm-8 text-start text-dark">
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+            <dt class="col-sm-4 text-end text-success fw-bold">
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+            <dd class="col-sm-8 text-start text-dark">
+                <img src="@Model.Image" alt="@Model.Title" style="width: 50px; height: auto; border-radius: 5px;" />
+            </dd>
+
+            <dt class="col-sm-4 text-end text-success fw-bold">
+                @Html.DisplayNameFor(model => model.Details)
+            </dt>
+            <dd class="col-sm-8 text-start text-dark">
+            @Html.Raw(Model.Details)
+            </dd>
+        </dl>
+        <div class="text-center mt-4">
+            <a asp-action="Edit" asp-route-id="@Model.EventId" class="btn btn-warning">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
 </div>

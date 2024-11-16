@@ -87,12 +87,19 @@
         </div>
     </div>
 </div>
-@{
-    var summerNote = new Pantus.Areas.Admin.Models.SummerNote("#Detail");
-    <partial name="_SummerNote" model="summerNote" />
-}
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+<script>
+    $('#Details').summernote({
+      placeholder: 'Nhập dữ liệu zô đây nhaaa',
+      tabsize: 2,
+      height: 120,
+      toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+      ]
+    });
+</script>

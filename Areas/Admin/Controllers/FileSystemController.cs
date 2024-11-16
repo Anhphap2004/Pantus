@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
-namespace PTUDW.Areas.Admin.Controllers
+namespace Pantus.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("/Admin/el-finder-file-system")]

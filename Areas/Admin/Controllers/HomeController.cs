@@ -9,5 +9,6 @@ namespace Pantus.Areas.Admin.Controllers
         {
             return View();
         }
+      
     }
 }

@@ -8,7 +8,7 @@
 <div class="container mt-5">
     <div class="text-center mb-4">
         <h1 class="text-primary" style="font-family: 'Playball', cursive; font-size: 36px;">
-            <i class="fas fa-plus-circle"></i> Tạo Sự Kiện Mới
+            <i class="fas fa-plus-circle"></i> Sửa Sự Kiện 
         </h1>
         <hr class="w-25 mx-auto" style="border-top: 3px solid orange;">
     </div>
@@ -87,12 +87,20 @@
         </div>
     </div>
 </div>
-@{
-    var summerNote = new Pantus.Areas.Admin.Models.SummerNote("#Detail");
-    <partial name="_SummerNote" model="summerNote" />
-}
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+<script>
+    $('#Details').summernote({
+        placeholder: 'Nhập dữ liệu zô đây nhaaa',
+        tabsize: 2,
+        minHeight: 120, // Chiều cao tối thiểu
+        maxHeight: 500, // Chiều cao tối đa (tuỳ ý)
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
