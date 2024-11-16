@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<Pantus.Models.TbService>
+
 @foreach(var p in Model)
 {
-    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.1s">
-        <div class="bg-light rounded service-item">
-            <div class="service-content d-flex align-items-center justify-content-center p-4">
-                <div class="service-content-icon text-center">
-                    <i class="@p.Icon fa-7x text-primary mb-4"></i>
-                    <h4 class="mb-3">@p.Title</h4>
-                    <p class="mb-4">@p.Description</p>
-                    <a href="#" class="btn btn-primary px-4 py-2 rounded-pill">Read More</a>
-                </div>
+    <div class="col-lg-3 col-md text-center mb-3">
+        <div class="service_first pb-5 pt-3 rounded-top-3">
+            <div class="icon_parent">
+                <i class="@p.Icon icon_child"></i>
             </div>
+            <div class="mt-3 text-danger" style="font-size:20px; font-weight: bold">@p.Title</div>
         </div>
+        <img class="size_img" src="@p.Image" alt="Birthday">
     </div>
 }
+<div class="line-retanglee"></div>
+

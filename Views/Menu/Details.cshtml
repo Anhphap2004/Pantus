@@ -97,62 +97,7 @@
 <div>
     @Html.Raw(Model.Detail)
 </div>
-@* <!-- Bình luận -->
-<!-- Khu vực review sản phẩm -->
-<div class="product-reviews-section text-center">
-    <h2 class="product-reviews-title">Khách Hàng Đánh Giá</h2>
-    <!-- Một review -->
-    @foreach (var p in MenuReview)
-    {
-        <div class="review-item d-flex flex-column align-items-center mb-4">
-            <div>
-                <img src="~/assets/img/userreview/@p.Image" alt="Reviewer Avatar" class="review-avatar rounded-circle" style="width: 80px; height: 80px;">
-                <span class="reviewer-name">@p.Name</span>
-            </div>
-            <div class="review-content text-center">
-                <span class="review-date text-primary">@p.CreatedDate</span>
-                <div class="review-rating">
-                    @for (var i = 0; i < p.Rating; i++)
-                    {
-                        <i class="fas fa-star"></i>
-                    }
-                </div>
-                <div class="review-text text-danger">
-                    <p>@p.Detail</p>
-                </div>
-            </div>
-            <!-- Phần phản hồi bình luận -->
-            <div class="reply-section mt-3">
-                <h3 class="reply-title">Phản Hồi</h3>
-                <form class="reply-form" action="#" method="POST">
-                    <div class="mb-3">
-                        <input type="text" class="form-control" name="replyName" placeholder="Tên của bạn" required>
-                    </div>
-                    <div class="mb-3">
-                        <textarea class="form-control" name="reply" placeholder="Viết phản hồi của bạn ở đây..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Gửi Phản Hồi</button>
-                </form>
-            </div>
-        </div>
-    }
-    <div class="add-review-section">
-        <h2 class="add-review-title">Viết Đánh Giá</h2>
-        <form class="add-review-form" action="#" method="POST">
-            <div class="mb-3">
-                <input type="text" class="form-control" name="name" placeholder="Tên của bạn" required>
-            </div>
-            <div class="mb-3">
-                <input type="email" class="form-control" name="email" placeholder="Email của bạn" required>
-            </div>
-            <div class="mb-3">
-                <textarea class="form-control" name="review" placeholder="Viết đánh giá của bạn ở đây..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Gửi Đánh Giá</button>
-        </form>
-    </div>
-</div>
- *@
+
 <div style="max-width: 900px; margin: auto; padding: 20px; text-align: center; font-family: Arial, sans-serif;">
     <h2 style="margin-bottom: 20px; font-size: 24px; font-weight: bold;">Khách Hàng Đánh Giá</h2>
     <div style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding-bottom: 10px;">

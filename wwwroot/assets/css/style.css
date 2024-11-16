@@ -1,4 +1,323 @@
-﻿
+﻿.line-retanglee {
+    width: 100px;
+    height: 5px;
+    margin: 0 auto;
+    background-color: rgb(221, 39, 69);
+    margin-top: 3rem;
+}
+.hii {
+    margin-top: 100px;
+}
+
+.font_size {
+    font-size: 30px;
+}
+
+.icon_knife {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #e17055;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.icon_glass:hover {
+    background-color: brown;
+}
+
+.icon_knife:hover {
+    background-color: brown;
+}
+
+.icon_glass {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #e17055;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.meo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cho {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.text_under_service {
+    color: #E17055;
+    text-align: center;
+}
+
+.color {
+    background-color: #FFA1A1;
+    padding: 20px;
+}
+
+.headset_parent {
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+    .headset_parent:hover {
+        background-color: #861919;
+    }
+
+.headset_child {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    .headset_child:hover {
+        color: white !important;
+    }
+
+.glass_parent {
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+    .glass_parent:hover {
+        background-color: #861919;
+    }
+
+.glass_child {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    .glass_child:hover {
+        color: white !important;
+    }
+
+.serve_parent {
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+    .serve_parent:hover {
+        background-color: #861919;
+    }
+
+.serve_child {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    .serve_child:hover {
+        color: white !important;
+    }
+
+.icon_parent {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    border-radius: 50%;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+    .icon_parent:hover {
+        background-color: #8C0604FF;
+    }
+
+.icon_child {
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #861919;
+}
+
+    .icon_child:hover {
+        color: white !important;
+    }
+
+.service_first {
+    background-color: #FFA1A1;
+}
+
+.size_img {
+    width: 100%;
+    height: 200px;
+    transition: .5s;
+}
+
+    .size_img:hover {
+        scale: 1.1;
+        border-radius: 10px;
+    }
+
+.img_service {
+    transition: 0.5s;
+}
+
+    .img_service:hover {
+        scale: 1.1;
+        border-radius: 10px;
+    }
+
+#myBtn {
+    position: fixed;
+    bottom: 60px;
+    right: 10px;
+    background-color: #fff;
+    border: 2px solid #F195B2;
+    cursor: pointer;
+    border-radius: 30px;
+    width: 50px;
+    height: 50px;
+}
+
+    #myBtn:hover {
+        background-color: #F195B2;
+    }
+
+.mybtn {
+    color: rgb(255, 0, 251);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1024px) {
+    .banner-text {
+        font-size: 2rem;
+        position: relative;
+        top: -80px;
+        left: -100px;
+    }
+
+    .banner {
+        height: 200px;
+    }
+
+    .img_first {
+        width: 440px;
+        height: auto;
+    }
+
+    .AnhhPhapp-tet-left,
+    .AnhhPhapp-tet-right,
+    .AnhhPhapp-blog-left,
+    .AnhhPhapp-blog-right,
+    .AnhhPhapp-our-left,
+    .AnhhPhapp-our-right,
+    .AnhhPhapp-video-left,
+    .AnhhPhapp-video-right {
+        display: none !important
+    }
+}
+
+.AnhhPhapp-tet-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.AnhhPhapp-tet-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.AnhhPhapp-blog-left {
+    position: absolute;
+    top: 220px;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.AnhhPhapp-blog-right {
+    position: absolute;
+    top: 150px;
+    right: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.img_ads {
+    width: 300px;
+    height: 250px;
+}
+
+.hang1 {
+    position: relative;
+    top: 20px;
+    color: rgb(203, 33, 33);
+}
+
+.hr_trangtri {
+    width: 200px;
+    height: 3px;
+    background-color: rgb(139, 22, 22);
+    margin: 0px auto;
+}
+
+.blog_trangtri_tet {
+    margin-left: 110px;
+}
+
+.tieu_canh_title {
+    max-width: 900px;
+    text-justify: auto;
+    padding-bottom: 5px;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6em;
+}
+
+.img_deco1 {
+    display: flex;
+    gap: 20px;
+}
+
+.img_tragtri1 {
+    width: 230px;
+    height: 230px;
+}
 /*** Spinner Start ***/
 #spinner {
     opacity: 0;
