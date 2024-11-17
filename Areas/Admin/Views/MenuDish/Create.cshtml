@@ -59,11 +59,11 @@
                     </div>
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
-               <div class="form-group mb-3">
-                   <label asp-for="Detail" class="control-label">Chi Tiết</label>
+                <div class="form-group mb-3">
+                    <label asp-for="Detail" class="control-label">Chi Tiết</label>
                     <textarea asp-for="Detail" class="form-control"></textarea>
-                   <span asp-validation-for="Detail" class="text-danger"></span>
-               </div>
+                    <span asp-validation-for="Detail" class="text-danger"></span>
+                </div>
                 <!-- Giá và giá giảm -->
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -113,7 +113,7 @@
     $('#Detail').summernote({
       placeholder: 'Nhập dữ liệu zô đây nhaaa',
       tabsize: 2,
-      height: 120,
+      height: 500,
       toolbar: [
         ['style', ['style']],
         ['font', ['bold', 'underline', 'clear']],
@@ -124,4 +124,9 @@
         ['view', ['fullscreen', 'codeview', 'help']]
       ]
     });
-</script>  
+</script>   
+
+@* @{
+    var summerNote = new Pantus.Areas.Admin.Models.SummerNote("#meo");
+    <partial name="_SummerNote" model="summerNote" />
+} *@
