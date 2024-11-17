@@ -1,4 +1,22 @@
-﻿.line-retanglee {
+﻿body {
+    background-image: url(../trangtri/bg-img-navbar.webp);
+
+
+}
+    body::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    body::-webkit-scrollbar-track {
+        background-color: #fafafa;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-image: linear-gradient(-45deg, #6a5af9, #d66efd);
+        border-radius: 50px;
+    }
+
+.line-retanglee {
     width: 100px;
     height: 5px;
     margin: 0 auto;
@@ -20,6 +38,19 @@
     background-color: #e17055;
     border-radius: 50%;
     cursor: pointer;
+}
+.AnhhPhapp-our-left {
+    position: absolute;
+    top: 2230px;
+    left: 0;
+    z-index: 9999
+}
+
+.AnhhPhapp-our-right {
+    position: absolute;
+    top: 2230px;
+    right: 0;
+    z-index: 9999
 }
 
 .icon_glass:hover {
