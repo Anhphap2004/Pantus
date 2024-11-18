@@ -26,6 +26,9 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
 
+	<link href="~/assets/toastr/toastr.css" rel="stylesheet" />
+
+
     <!-- Template Stylesheet -->
     <link href="~/assets/css/style.css" rel="stylesheet">
 </head>
@@ -172,7 +175,7 @@
     <!-- Copyright End -->
     <!-- Back to Top -->
     <a href="#" class="btn btn-md-square btn-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
-
+	
 
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -183,11 +186,13 @@
     <script src="~/assets/lib/counterup/counterup.min.js"></script>
     <script src="~/assets/lib/lightbox/js/lightbox.min.js"></script>
     <script src="~/assets/lib/owlcarousel/owl.carousel.min.js"></script>
-
+	<script src="~/assets/toastr/toastr.min.js"></script>
     <!-- Template Javascript -->
     <script src="~/assets/js/main.js"></script>
     <script src="https://cdn.leanhduc.pro.vn/jquery/3.6.0.min.js"></script>
     <script src="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/main.js"></script>
+    @RenderSection("Scripts", required: false)
+
 </body>
 
 </html>

@@ -37,22 +37,13 @@ namespace Pantus.Controllers
         {
             return View();
         }
-        public IActionResult Contact()
-        {
-            ViewBag.Contact = _context.TbContacts.ToList();
-            return View();
-        }
+       
         public IActionResult Services()
         {
             ViewBag.Services = _context.TbServices.ToList();
             return View();
         }
-        public IActionResult phap()
-        {
-            ViewBag.Services = _context.TbServices.ToList();
-            return View();
-        }
-
+        
         public IActionResult Privacy()
         {
             return View();

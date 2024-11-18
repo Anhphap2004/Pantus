@@ -202,6 +202,7 @@ public partial class PantusContext : DbContext
             entity.Property(e => e.ModifiedBy).HasMaxLength(150);
             entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
             entity.Property(e => e.Title).HasMaxLength(150);
+            entity.Property(e => e.UrlPath).HasMaxLength(500);
         });
 
         modelBuilder.Entity<TbMenuCategory>(entity =>
