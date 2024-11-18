@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@using Pantus.Utilities
+<!doctype html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
@@ -1402,17 +1403,17 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link py-0 d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="~/admin/images/avatars/01.png" alt="User-Profile" class="img-fluid avatar avatar-50 avatar-rounded">
+                                    <img src="~/admin/images/User-profile/havi.jpg" alt="User-Profile" class="img-fluid avatar avatar-50 avatar-rounded">
                                     <div class="caption ms-3 d-none d-md-block ">
-                                        <h6 class="mb-0 caption-title">Anhh Phapp</h6>
-                                        <p class="mb-0 caption-sub-title">Marketing Administrator</p>
+                                        <h6 class="mb-0 caption-title">@Function._Username</h6>
+                                        <p class="mb-0 caption-sub-title">@Function._Email</p>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="~/dashboard/app/user-profile.html">Profile</a></li>
-                                    <li><a class="dropdown-item" href="~/dashboard/app/user-privacy-setting.html">Privacy Setting</a></li>
+                                    <li><a class="dropdown-item" href="~/dashboard/app/user-profile.html">Thông Tin</a></li>
+                                    <li><a class="dropdown-item" href="~/dashboard/app/user-privacy-setting.html">Quyền Riêng Tư</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="~/dashboard/auth/sign-in.html">Logout</a></li>
+                                    <li><a class="dropdown-item" href="~/Admin/Login">Đăng Xuất</a></li>
                                 </ul>
                             </li>
                         </ul>
