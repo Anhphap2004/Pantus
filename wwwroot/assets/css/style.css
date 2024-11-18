@@ -1,10 +1,17 @@
-﻿body {
+﻿.phapcolor{
+    color: white !important;
+}
+.phapbg {
+    background-color: #ba1718 !important;
+}
+body {
     background-image: url(../trangtri/bg-img-navbar.webp);
 
 
 }
     body::-webkit-scrollbar {
         width: 10px;
+       
     }
 
     body::-webkit-scrollbar-track {
@@ -304,6 +311,36 @@
 .AnhhPhapp-blog-right {
     position: absolute;
     top: 150px;
+    right: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+.AnhhPhapp-s-left {
+    position: absolute;
+    top: 980px;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.AnhhPhapp-r-right {
+    position: absolute;
+    top: 1900px;
+    right: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+.AnhhPhapp-p-left {
+    position: absolute;
+    top: 4680px;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.AnhhPhapp-n-right {
+    position: absolute;
+    top: 4600px;
     right: 0;
     z-index: 9999;
     pointer-events: none;
