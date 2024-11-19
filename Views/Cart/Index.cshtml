@@ -1,0 +1,92 @@
+﻿<div style="max-width: 900px; margin: auto; background-color: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden; margin-top: 50px;">
+    <h1 style="text-align: center; color: #d32f2f; font-size: 32px; margin-bottom: 20px; font-family: 'Brush Script MT', cursive;">Giỏ Hàng Tết Nguyên Đán</h1>
+
+    <!-- Danh sách sản phẩm -->
+    <div id="cartItems">
+        <!-- Sản phẩm 1 -->
+        <div data-price="100000" class="cart-item" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 15px;">
+            <img src="~/assets/TrangTri/10.png" alt="Sản phẩm" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;">
+            <div style="flex-grow: 1; margin-left: 15px;">
+                <p style="font-size: 18px; font-weight: bold; margin: 0; color: #d32f2f;">Sản phẩm 1</p>
+                <p style="margin: 0; color: #f00;">Giá: <span class="price">100.000</span>đ</p>
+                <p style="margin: 5px 0; font-size: 16px; color: #333;">Tổng: <span class="total-item-price">100.000</span>đ</p>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <button class="btn-minus" style="background-color: #007bff; color: #fff; border: none; padding: 5px 10px; cursor: pointer; font-size: 16px; border-radius: 4px;">-</button>
+                <input type="number" value="1" min="1" class="quantity" style="width: 50px; text-align: center; margin: 0 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <button class="btn-plus" style="background-color: #007bff; color: #fff; border: none; padding: 5px 10px; cursor: pointer; font-size: 16px; border-radius: 4px;">+</button>
+            </div>
+        </div>
+
+        <!-- Sản phẩm 2 -->
+        <div data-price="200000" class="cart-item" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 15px;">
+            <img src="~/assets/TrangTri/7.png" alt="Sản phẩm" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;">
+            <div style="flex-grow: 1; margin-left: 15px;">
+                <p style="font-size: 18px; font-weight: bold; margin: 0; color: #d32f2f;">Sản phẩm 2</p>
+                <p style="margin: 0; color: #f00;">Giá: <span class="price">200.000</span>đ</p>
+                <p style="margin: 5px 0; font-size: 16px; color: #333;">Tổng: <span class="total-item-price">200.000</span>đ</p>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <button class="btn-minus" style="background-color: #007bff; color: #fff; border: none; padding: 5px 10px; cursor: pointer; font-size: 16px; border-radius: 4px;">-</button>
+                <input type="number" value="1" min="1" class="quantity" style="width: 50px; text-align: center; margin: 0 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <button class="btn-plus" style="background-color: #007bff; color: #fff; border: none; padding: 5px 10px; cursor: pointer; font-size: 16px; border-radius: 4px;">+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tổng cộng -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 2px solid #ddd;">
+        <p style="font-size: 18px; font-weight: bold; margin: 0;">Tổng cộng: <span id="totalPrice" style="color: #f00;">300.000</span>đ</p>
+        <button style="background-color: #28a745; color: #fff; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px;">Thanh toán</button>
+    </div>
+</div>
+
+<script>
+    function updateTotal() {
+        const cartItems = document.querySelectorAll(".cart-item");
+        let grandTotal = 0;
+
+        cartItems.forEach(item => {
+            const price = parseInt(item.getAttribute("data-price"));
+            const quantity = parseInt(item.querySelector(".quantity").value);
+            const itemTotal = price * quantity;
+
+            // Cập nhật tổng giá cho sản phẩm hiện tại
+            item.querySelector(".total-item-price").innerText = itemTotal.toLocaleString("vi-VN");
+
+            // Cộng vào tổng giỏ hàng
+            grandTotal += itemTotal;
+        });
+
+        // Cập nhật tổng giỏ hàng
+        document.getElementById("totalPrice").innerText = grandTotal.toLocaleString("vi-VN") + "đ";
+    }
+
+    document.querySelectorAll(".btn-plus").forEach(button => {
+        button.addEventListener("click", function () {
+            const quantityInput = this.parentNode.querySelector(".quantity");
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            updateTotal();
+        });
+    });
+
+    document.querySelectorAll(".btn-minus").forEach(button => {
+        button.addEventListener("click", function () {
+            const quantityInput = this.parentNode.querySelector(".quantity");
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+                updateTotal();
+            }
+        });
+    });
+
+    document.querySelectorAll(".quantity").forEach(input => {
+        input.addEventListener("input", function () {
+            if (this.value < 1) this.value = 1; // Đảm bảo số lượng tối thiểu là 1
+            updateTotal();
+        });
+    });
+
+    updateTotal(); // Khởi tạo tổng giá ban đầu
+
+</script>

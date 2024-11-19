@@ -1,6 +1,17 @@
 ﻿(function ($) {
     "use strict";
+    // Sử dụng JS để hiển thị dropdown khi hover vào ảnh
+    document.querySelector('.dropdown').addEventListener('mouseover', function () {
+        var dropdownMenu = this.querySelector('.dropdown-menu');
+        dropdownMenu.style.display = 'block';
+        dropdownMenu.style.visibility = 'visible';
+    });
 
+    document.querySelector('.dropdown').addEventListener('mouseleave', function () {
+        var dropdownMenu = this.querySelector('.dropdown-menu');
+        dropdownMenu.style.display = 'none';
+        dropdownMenu.style.visibility = 'hidden';
+    });
     // Spinner
     var spinner = function () {
         setTimeout(function () {

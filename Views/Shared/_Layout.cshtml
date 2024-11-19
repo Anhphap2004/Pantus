@@ -63,8 +63,37 @@
                     <div class="navbar-nav mx-auto">
                         @await Component.InvokeAsync("MenuTop")
                     </div>
-                    <button class="btn-search btn btn-light text-danger btn-md-square me-4 rounded-circle d-none d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
-                    <a href="" class="btn btn-light py-2 px-4 d-none d-xl-inline-block rounded-pill text-danger">Book Now</a>
+                    <!-- Nút Giỏ hàng (Liên kết) -->
+                    <div style="position: relative; display: inline-block;">
+                        <a href="/cart" class="btn-cart btn btn-light text-danger btn-md-square me-4 rounded-circle d-none d-lg-inline-flex" style="position: relative;">
+                            <i class="fas fa-shopping-cart"></i> <!-- Biểu tượng giỏ hàng -->
+                        </a>
+                        <!-- Số lượng sản phẩm -->
+                        <span id="cartCount" style="position: absolute; top: -9px; right: 15px; background-color: #dc3545; color: #fff;
+    font-size: 12px; font-weight: bold; border-radius: 50%; padding: 2px 6px; text-align: center;">0</span>
+                    </div>
+
+
+
+
+
+                    <!-- Nút Hồ Sơ Người Dùng với hình ảnh và style inline -->
+                    <div class="dropdown d-inline-block" style="position: relative;">
+                        <a href="#" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="~/assets/img/UserProfile/AnhhPhapp.jpg" alt="User"
+                                 style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; border: 2px solid;">
+                        </a>
+
+                        <!-- Menu con (Dropdown) với CSS inline để hiển thị khi hover -->
+                        <ul class="dropdown-menu" aria-labelledby="profileDropdown"
+                            style="display: none; position: absolute; left: 0; top: 100%; visibility: hidden; z-index: 10;">
+                            <li><a class="dropdown-item" href="/profile">Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item" href="/change-password">Đổi mật khẩu</a></li>
+                            <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+
+
                 </div>
             </nav>
         </div>
@@ -192,7 +221,73 @@
     <script src="https://cdn.leanhduc.pro.vn/jquery/3.6.0.min.js"></script>
     <script src="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/main.js"></script>
     @RenderSection("Scripts", required: false)
+    <script>
+               // Biến lưu trữ số lượng sản phẩm trong giỏ hàng
+        let cartQuantity = 0;
 
+        // Cập nhật số lượng sản phẩm hiển thị trên icon giỏ hàng
+        function updateCartQuantity() {
+            // Cập nhật số lượng hiển thị trong giỏ hàng
+            document.getElementById('cartCount').innerText = cartQuantity;
+        }
+
+        // Cập nhật tổng giá trị của giỏ hàng
+        function updateTotal() {
+            const cartItems = document.querySelectorAll(".cart-item");
+            let grandTotal = 0;
+            cartQuantity = 0;  // Reset số lượng giỏ hàng mỗi lần tính lại tổng
+
+            cartItems.forEach(item => {
+                const price = parseInt(item.getAttribute("data-price"));
+                const quantity = parseInt(item.querySelector(".quantity").value);
+                const itemTotal = price * quantity;
+
+                // Cập nhật tổng giá cho sản phẩm hiện tại
+                item.querySelector(".total-item-price").innerText = itemTotal.toLocaleString("vi-VN");
+
+                // Cộng vào tổng giỏ hàng
+                grandTotal += itemTotal;
+                // Cộng số lượng sản phẩm vào giỏ hàng
+                cartQuantity += quantity;
+            });
+
+            // Cập nhật tổng giỏ hàng
+            document.getElementById("totalPrice").innerText = grandTotal.toLocaleString("vi-VN") + "đ";
+
+            // Cập nhật số lượng sản phẩm trên icon giỏ hàng
+            updateCartQuantity();
+        }
+
+        // Cập nhật số lượng khi người dùng tăng giảm sản phẩm trong giỏ hàng
+        document.querySelectorAll(".btn-plus").forEach(button => {
+            button.addEventListener("click", function () {
+                const quantityInput = this.parentNode.querySelector(".quantity");
+                quantityInput.value = parseInt(quantityInput.value) + 1;
+                updateTotal();
+            });
+        });
+
+        document.querySelectorAll(".btn-minus").forEach(button => {
+            button.addEventListener("click", function () {
+                const quantityInput = this.parentNode.querySelector(".quantity");
+                if (quantityInput.value > 1) {
+                    quantityInput.value = parseInt(quantityInput.value) - 1;
+                    updateTotal();
+                }
+            });
+        });
+
+        document.querySelectorAll(".quantity").forEach(input => {
+            input.addEventListener("input", function () {
+                if (this.value < 1) this.value = 1; // Đảm bảo số lượng tối thiểu là 1
+                updateTotal();
+            });
+        });
+
+        // Khởi tạo tổng giá ban đầu và số lượng sản phẩm
+        updateTotal();
+
+    </script>
 </body>
 
 </html>
