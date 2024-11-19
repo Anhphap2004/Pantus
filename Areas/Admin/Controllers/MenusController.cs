@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pantus.Models;
-
+using Pantus.Utilities;
 namespace Pantus.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -22,12 +22,16 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Menus
         public async Task<IActionResult> Index()
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             return View(await _context.TbMenus.ToListAsync());
         }
 
         // GET: Admin/Menus/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -46,6 +50,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Menus/Create
         public IActionResult Create()
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             return View();
         }
 
@@ -56,6 +62,8 @@ namespace Pantus.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MenuId,Title,Alias,Description,Levels,ParentId,Position,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsActive")] TbMenu tbMenu)
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             if (ModelState.IsValid)
             {
                 tbMenu.Alias = Pantus.Utilities.Function.TitleSlugGenerationAlias(tbMenu.Title);
@@ -69,6 +77,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Menus/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -89,6 +99,8 @@ namespace Pantus.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MenuId,Title,Alias,Description,Levels,ParentId,Position,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsActive")] TbMenu tbMenu)
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             if (id != tbMenu.MenuId)
             {
                 return NotFound();
@@ -120,6 +132,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Menus/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();

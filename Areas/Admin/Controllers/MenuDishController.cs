@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pantus.Models;
-
+using Pantus.Utilities;
 namespace Pantus.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -22,6 +22,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuDish
         public async Task<IActionResult> Index()
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             var pantusContext = _context.TbMenuItems.Include(t => t.Category);
             return View(await pantusContext.ToListAsync());
         }
@@ -29,6 +31,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuDish/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -48,6 +52,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuDish/Create
         public IActionResult Create()
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             ViewData["CategoryId"] = new SelectList(_context.TbMenuCategories, "CategoryId", "CategoryId");
             return View();
         }
@@ -59,6 +65,8 @@ namespace Pantus.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MenuItemId,Title,Alias,Description,Price,Image,CategoryId,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsActive,PriceSale,Quantity,Star,Detail")] TbMenuItem tbMenuItem)
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             if (ModelState.IsValid)
             {
                 tbMenuItem.Alias = Pantus.Utilities.Function.TitleSlugGenerationAlias(tbMenuItem.Title);
@@ -73,6 +81,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuDish/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -94,6 +104,8 @@ namespace Pantus.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MenuItemId,Title,Alias,Description,Price,Image,CategoryId,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsActive,PriceSale,Quantity,Star,Detail")] TbMenuItem tbMenuItem)
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             if (id != tbMenuItem.MenuItemId)
             {
                 return NotFound();
@@ -126,6 +138,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuDish/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!Function.IsLogin())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
