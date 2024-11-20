@@ -17,7 +17,7 @@
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.leanhduc.pro.vn/utilities/animation/shake-effect/style.css" />
     <!-- Libraries Stylesheet -->
     <link href="~/assets/lib/animate/animate.min.css" rel="stylesheet">
     <link href="~/assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
@@ -54,11 +54,19 @@
         <div class="container">
             <nav class="navbar navbar-light navbar-expand-lg py-4">
                 <a href="index.html" class="navbar-brand">
-                    <h1 class="text-primary fw-bold mb-0">Pan<span class="text-dark">Tus</span> </h1>
+                    <h1 class=" fw-bold mb-0 rung" style="color: #e0ec0b">Pan<span class="text-dark">Tus</span> </h1>
                 </a>
                 <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars text-primary"></span>
                 </button>
+                <div class="countdown" style="display: flex; gap: 20px;justify-content: center; align-items: center; height: 20px;  color: #ba1718; font-family: 'Arial', sans-serif; font-size: 20px; margin-left: 50px">
+                    <div class="number" id="hours" style="padding: 10px; background-color: white; border-radius: 10px; transition: transform 0.5s ease; min-width: 30px; text-align: center;">00</div>
+                    <span style="color: yellow; font-size: 25px">:</span>
+                    <div class="number" id="minutes" style="padding: 10px; background-color: white; border-radius: 10px; transition: transform 0.5s ease; min-width: 30px; text-align: center;">00</div>
+                    <span style="color: yellow;font-size: 25px">:</span>
+                    <div class="number" id="seconds" style="padding: 10px; background-color: white; border-radius: 10px; transition: transform 0.5s ease; min-width: 30px; text-align: center;">00</div>
+                </div>
+
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto">
                         @await Component.InvokeAsync("MenuTop")
@@ -72,11 +80,6 @@
                         <span id="cartCount" style="position: absolute; top: -9px; right: 15px; background-color: #dc3545; color: #fff;
     font-size: 12px; font-weight: bold; border-radius: 50%; padding: 2px 6px; text-align: center;">0</span>
                     </div>
-
-
-
-
-
                     <!-- Nút Hồ Sơ Người Dùng với hình ảnh và style inline -->
                     <div class="dropdown d-inline-block" style="position: relative;">
                         <a href="#" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -92,8 +95,6 @@
                             <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
                         </ul>
                     </div>
-
-
                 </div>
             </nav>
         </div>
@@ -222,6 +223,37 @@
     <script src="https://cdn.leanhduc.pro.vn/utilities/multi-color-star-effects/main.js"></script>
     @RenderSection("Scripts", required: false)
     <script>
+        
+                    // Đặt thời gian đếm ngược là 1 ngày (24 giờ) từ thời điểm hiện tại
+                    const countdownDate = new Date(Date.now() + 24 * 60 * 60 * 1000).getTime();
+
+                    const updateCountdown = () => {
+                        const now = new Date().getTime();
+                        const distance = countdownDate - now;
+
+                        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                        document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                        document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+                        // Hiệu ứng chuyển số
+                        document.querySelectorAll('.number').forEach((el) => {
+                            el.style.transform = 'scale(1.2)';
+                            setTimeout(() => {
+                                el.style.transform = 'scale(1)';
+                            }, 500);
+                        });
+
+                        if (distance < 0) {
+                            clearInterval(interval);
+                            document.querySelector('nav').innerHTML = "<h1 style='color: white; text-align: center;'>Thời gian đã hết!</h1>";
+                        }
+                    };
+
+                    const interval = setInterval(updateCountdown, 1000);
                // Biến lưu trữ số lượng sản phẩm trong giỏ hàng
         let cartQuantity = 0;
 

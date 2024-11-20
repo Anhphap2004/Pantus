@@ -20,12 +20,17 @@
     <link rel="stylesheet" href="~/admin/css/aprycot.min.css?v=1.0.0">
 </head>
 
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-success"
-         style="
-            max-width: 400px;
-            margin: 20px auto;
+
+
+<body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div id="successMessage" class="alert alert-success"
+             style="
+            position: fixed; /* Đảm bảo thông báo không đẩy các phần tử khác */
+            top: 20px; /* Cách mép trên 20px */
+            right: 60px; /* Cách mép phải 20px */
+            max-width: 370px; /* Đảm bảo không vượt quá kích thước khung nhìn */
             padding: 15px 20px;
             border-radius: 8px;
             background-color: #28a745;
@@ -33,20 +38,22 @@
             font-size: 16px;
             font-family: Arial, sans-serif;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            ">
-        @TempData["SuccessMessage"]
-    </div>
-}
+            z-index: 9999; /* Luôn ở trên cùng */
+            text-align: left; /* Văn bản căn trái trong hộp thông báo */
+            word-wrap: break-word; /* Ngắt dòng nếu nội dung quá dài */
+             ">
+            @TempData["SuccessMessage"]
+        </div>
+    }
 
-<body class=" " data-bs-spy="scroll" data-bs-target="#elements-section" data-bs-offset="0" tabindex="0">
+
     <div class="wrapper">
         <section class="container-fluid bg-circle-login" id="auth-sign">
             <div class="row align-items-center">
                 <div class="col-md-12 col-lg-7 col-xl-4">
                     <div class="card-body">
-                        <a href="#">
-                            <img src="~/admin/images/favicon.png" class="img-fluid logo-img" alt="img4">
+                        <a href="#" style="display: inline-block; transform: translateY(-30px); transition: transform 0.3s ease;">
+                            <img src="~/admin/images/favicon.png" class="img-fluid logo-img" alt="img5">
                         </a>
                         <h2 class="mb-2 text-center">Đăng Nhập</h2>
                         <p class="text-center">Đăng Nhập Để Giữ Kết Nối.</p>
@@ -54,13 +61,13 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" asp-for="Email" class="form-control form-control-sm" id="email" aria-describedby="email" placeholder=" ">
+                                        <label for="Username" class="form-label">Tên Người Dùng</label>
+                                        <input type="text" asp-for="Username" class="form-control form-control-sm" id="Username" aria-describedby="email" placeholder=" ">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="password" class="form-label">Password</label>
+                                        <label for="password" class="form-label">Mật Khẩu</label>
                                         <input type="password" asp-for="Password" class="form-control form-control-sm" id="password" aria-describedby="password" placeholder=" ">
                                     </div>
                                 </div>
