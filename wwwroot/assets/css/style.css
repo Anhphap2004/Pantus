@@ -1,4 +1,8 @@
-﻿
+﻿@media (max-width: 480px) {
+    .countdown {
+        display: none; /* Ẩn countdown khi màn hình nhỏ */
+    }
+}
 .phapcolor{
     color: white !important;
 }

@@ -15,8 +15,9 @@ namespace Pantus.Areas.Admin.Models
         public string? Password { get; set; }
         public string? Email { get; set; }
         public bool IsActive { get; set; }
-
+        public int? RoleId { get; set; }
       
+            public DateTime? LastLogin { get; set; }
 
     }
 }

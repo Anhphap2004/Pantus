@@ -12,6 +12,7 @@ namespace Pantus.Utilities
         public static string _MessageEmail = string.Empty;
         public static string _FullName = string.Empty;
         public static int Phone = 0;
+        public static int _RoleId = 0;
         
 
         // Tạo alias slug từ title

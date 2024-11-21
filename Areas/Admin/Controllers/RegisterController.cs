@@ -24,14 +24,29 @@ namespace Pantus.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var check = _context.TbAccounts.Where(m => m.Email == user.Email).FirstOrDefault();
+            var check = _context.TbAccounts
+    .Where(m => m.Email == user.Email || m.Username == user.Username)
+    .FirstOrDefault();
+
             if (check != null)
             {
-                Function._MessageEmail = "Duplicate Email!";
+                // Kiểm tra xem email hay username đã tồn tại
+                if (check.Email == user.Email)
+                {
+                    Function._MessageEmail = "Email đã được sử dụng!";
+                }
+                else if (check.Username == user.Username)
+                {
+                    Function._MessageEmail = "Username đã được sử dụng!";
+                }
+
                 return RedirectToAction("Index", "Register");
             }
+
             Function._MessageEmail = string.Empty;
             user.Password = Function.MD5Password(user.Password);
+            user.RoleId = 2;
+            user.LastLogin = DateTime.Now;
             _context.Add(user);
             _context.SaveChanges();
             TempData["SuccessMessage"] = "Đăng ký thành công. Vui lòng đăng nhập!";

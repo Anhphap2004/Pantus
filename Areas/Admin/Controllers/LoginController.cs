@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 namespace Pantus.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class LoginController : Controller
     {
-        
+
         private readonly PantusContext _context;
         public LoginController(PantusContext context)
         {
@@ -24,24 +25,39 @@ namespace Pantus.Areas.Admin.Controllers
         public IActionResult Index(TbAccount user)
         {
 
-            if(user == null)
+            if (user == null)
             {
                 return NotFound();
-            }    
+            }
             string pw = Function.MD5Password(user.Password);
             var check = _context.TbAccounts.Where(m => (m.Username == user.Username) && (m.Password == pw)).FirstOrDefault();
-            if (check == null) 
+            if (check == null)
             {
                 Function._Message = "Lỗi Tên Đăng Nhập hoặc Mật Khẩu";
                 return RedirectToAction("Index", "Login");
 
             }
             Function._Message = string.Empty;
-            Function._AccountId =  check.AccountId;
+            Function._AccountId = check.AccountId;
             Function._Username = string.IsNullOrEmpty(check.Username) ? string.Empty : check.Username;
             Function._Email = string.IsNullOrEmpty(check.Email) ? string.Empty : check.Email;
-            return RedirectToAction("index", "Home");
+            Function._RoleId = check.RoleId ?? 0;
+
+
+            if (Function._RoleId == 1)
+            {
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
+            }
+            else if (Function._RoleId == 2) 
+            {
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login", new { area = "Admin" });
+            }
+
         }
-        
+
     }
 }

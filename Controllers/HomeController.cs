@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Pantus.Models;
-
+using Pantus.Utilities;
 namespace Pantus.Controllers
 {
     public class HomeController : Controller
@@ -16,7 +16,10 @@ namespace Pantus.Controllers
         }
         public IActionResult Index()
         {
-         ViewBag.MenuCategories = _context.TbMenuCategories.ToList();
+            TempData["Username"] = Function._Username;
+            TempData["Email"] = Function._Email;
+            TempData["AccountId"] = Function._AccountId;
+            ViewBag.MenuCategories = _context.TbMenuCategories.ToList();
            return View();
         }
         public IActionResult Blog()

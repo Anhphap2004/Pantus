@@ -1,4 +1,5 @@
 ﻿@model Pantus.Areas.Admin.Models.AdminUser
+@using Pantus.Utilities;
 @{
     Layout = "";
 }
@@ -82,7 +83,9 @@
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary">Đăng Ký</button>
                                 </div>
-                              
+                              <div class="text-danger m-4">
+                                    @Function._MessageEmail
+                              </div>
                                 <p class="text-center my-3">Hoặc đăng nhập bằng tài khoản khác?</p>
                                 <div class="d-flex justify-content-center">
                                     <ul class="list-group list-group-horizontal list-group-flush">
