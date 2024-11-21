@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Pantus.Models;
 using Pantus.Utilities;
@@ -16,9 +16,6 @@ namespace Pantus.Controllers
         }
         public IActionResult Index()
         {
-            TempData["Username"] = Function._Username;
-            TempData["Email"] = Function._Email;
-            TempData["AccountId"] = Function._AccountId;
             ViewBag.MenuCategories = _context.TbMenuCategories.ToList();
            return View();
         }
@@ -56,6 +53,16 @@ namespace Pantus.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public Task<IActionResult> Logout()
+        {
+            // Logic xử lý logout
+            Function._AccountId = 0;
+            Function._Message = string.Empty;
+            Function._MessageEmail = string.Empty;
+            Function._Email = string.Empty;
+            Function._Username = string.Empty;
+            return Task.FromResult<IActionResult>(RedirectToAction("Index", "Home"));
         }
     }
 }

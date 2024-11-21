@@ -15,8 +15,8 @@
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.leanhduc.pro.vn/utilities/animation/shake-effect/style.css" />
     <!-- Libraries Stylesheet -->
@@ -27,7 +27,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
 
-	<link href="~/assets/toastr/toastr.css" rel="stylesheet" />
+    <link href="~/assets/toastr/toastr.css" rel="stylesheet" />
 
 
     <!-- Template Stylesheet -->
@@ -87,12 +87,16 @@
                     <!-- Nút Hồ Sơ Người Dùng với hình ảnh và style inline -->
                     <div class="dropdown d-inline-block" style="position: relative;">
                         <!-- Nút Đăng Nhập nếu chưa đăng nhập -->
-                        <div id="loginBtn" style="display: block;">
-                            <a href="~/Admin/login/Index" class="btn btn-primary">Đăng nhập</a>
-                        </div>
-
-                        <!-- Menu Hồ Sơ khi đã đăng nhập -->
-                        <div id="profileSection" style="display: none;">
+                        @if(Function._Username == string.Empty)
+                        { 
+                            <div id="loginBtn" style="display: block;">
+                                <a href="~/Admin/login/Index" class="btn btn-primary">Đăng Nhập </a>
+                            </div>
+                        }
+                        else
+                        {
+                             <!-- Menu Hồ Sơ khi đã đăng nhập -->
+                        <div id="profileSection" style="display: block;">
                             <a href="#" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <!-- Hiển thị ảnh đại diện -->
                                 <img id="profileImage" src="~/assets/img/UserProfile/AnhhPhapp.jpg" alt="User"
@@ -102,11 +106,13 @@
                             <!-- Menu con (Dropdown) với CSS inline để hiển thị khi hover -->
                             <ul class="dropdown-menu" aria-labelledby="profileDropdown"
                                 style="display: none; position: absolute; left: 0; top: 100%; visibility: hidden; z-index: 10;">
-                                <li><a class="dropdown-item" href="/profile">Thông tin cá nhân</a></li>
+                                <li><a class="dropdown-item" asp-controller="DetailUser" asp-action="Detail">Thông Tin Người Dùng</a></li>
                                 <li><a class="dropdown-item" href="/change-password">Đổi mật khẩu</a></li>
-                                <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
+                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Đăng xuất</a></li>
                             </ul>
                         </div>
+                        }
+                       
                     </div>
                 </div>
             </nav>

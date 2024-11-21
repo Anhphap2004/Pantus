@@ -1,0 +1,95 @@
+﻿@using Pantus.Utilities;
+<style>
+      
+
+        .user-info {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            margin: auto;
+            margin-top: 30px;
+            transition: transform 0.3s;
+        }
+
+            .user-info:hover {
+                transform: scale(1.02);
+            }
+
+            .user-info img {
+                width: 180px;
+                height: 180px;
+                border-radius: 50%;
+                border: 5px solid #a7430b; /* Khung màu cam */
+                margin-right: 30px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .user-info div {
+                flex: 1;
+            }
+
+            .user-info h2 {
+                margin: 0;
+                color: #df4207; /* Màu tiêu đề */
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .user-info p {
+                margin: 8px 0;
+                color: #ab1a0b;
+                font-size: 18px;
+            }
+
+        .highlight {
+            background-color: #e7f3ff; /* Màu nền điểm nhấn */
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border: 1px solid #007bff;
+        }
+
+            .highlight p {
+                margin: 5px 0;
+                color: #333;
+            }
+
+        .edit-button {
+            background-color: #ba1718; /* Màu nút lưu */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+            .edit-button:hover {
+                background-color: #a10e10; /* Màu khi hover */
+                transform: scale(1.05);
+            }
+    </style>
+
+
+    <div class="user-info">
+        <img style="object-fit: cover;" src="~/assets/img/UserProfile/AnhhPhapp.jpg" alt="Hình ảnh người dùng">
+        <div>
+            <h2>Tên đăng nhập: <span>@Function._Username</span></h2>
+            <p>Họ tên: <span>@Function._FullName</span></p>
+            <p>Email: <span>@Function._Email</span></p>
+            <p>Số điện thoại: <span>@Function.Phone</span></p>
+            <p>Giới tính: <span>Nam</span></p>
+            <p>Ngày sinh: <span>30/09/2004</span></p>
+            <div class="highlight">
+                <p>Thông tin bổ sung: <span>Địa chỉ: Nghệ An, Việt Nam</span></p>
+                <p>Chức vụ: <span>Chủ Tịch Hội Đồng Thú Cưng</span></p>
+                <p>Ngày gia nhập: <span>01/01/2020</span></p>
+            </div>
+            <button class="edit-button">Lưu thông tin</button>
+        </div>
+    </div>
