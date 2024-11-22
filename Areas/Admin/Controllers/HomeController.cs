@@ -21,7 +21,8 @@ namespace Pantus.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Login");
             return View();
         }
-        public async Task<IActionResult> Logout()
+
+        public Task<IActionResult> Logout()
         {
             // Logic xử lý logout
             Function._AccountId = 0;
@@ -29,9 +30,10 @@ namespace Pantus.Areas.Admin.Controllers
             Function._MessageEmail = string.Empty;
             Function._Email = string.Empty;
             Function._Username = string.Empty;
-
+            Function._FullName = string.Empty;
+            Function._Phone = string.Empty;
             TempData["SuccessMessage"] = "Đăng Xuất thành công. Vui lòng đăng nhập!";
-            return RedirectToAction("Index", "Home");
+            return Task.FromResult<IActionResult>(RedirectToAction("Index", "Home"));
         }
 
     }

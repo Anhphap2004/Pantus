@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Pantus.Models.TbContact>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center fw-bold mb-4" style="font-family: 'Playball', cursive; font-size: 50px;">Danh sách liên hệ</h1>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered text-center align-middle">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Phone)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Email)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Message)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.IsRead)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.CreatedDate)</th>
+                <th scope="col">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1; // Biến đếm STT
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Message)</td>
+                    <td>
+                        @if (item.IsRead)
+                        {
+                            <span class="badge bg-success">Đã đọc</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">Chưa đọc</span>
+                        }
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                    <td> 
+                        <a asp-action="Details" asp-route-id="@item.ContactId" class="btn btn-sm btn-info text-white">Chi tiết</a>
+                        <a asp-action="Delete" asp-route-id="@item.ContactId" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

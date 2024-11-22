@@ -74,7 +74,15 @@
                 transform: scale(1.05);
             }
     </style>
-
+<div>
+    <a style=" position: absolute;
+    top: 170px;
+    right: 0;
+    z-index: 9999;
+    pointer-events: none" href="#">
+        <img alt="tet" src="~/assets/TrangTri/t-6.png" style="width:550px;" />
+    </a>
+</div>
 
     <div class="user-info">
         <img style="object-fit: cover;" src="~/assets/img/UserProfile/AnhhPhapp.jpg" alt="Hình ảnh người dùng">
@@ -82,7 +90,7 @@
             <h2>Tên đăng nhập: <span>@Function._Username</span></h2>
             <p>Họ tên: <span>@Function._FullName</span></p>
             <p>Email: <span>@Function._Email</span></p>
-            <p>Số điện thoại: <span>@Function.Phone</span></p>
+            <p>Số điện thoại: <span>@Function._Phone</span></p>
             <p>Giới tính: <span>Nam</span></p>
             <p>Ngày sinh: <span>30/09/2004</span></p>
             <div class="highlight">

@@ -41,6 +41,8 @@ namespace Pantus.Areas.Admin.Controllers
             Function._AccountId = check.AccountId;
             Function._Username = string.IsNullOrEmpty(check.Username) ? string.Empty : check.Username;
             Function._Email = string.IsNullOrEmpty(check.Email) ? string.Empty : check.Email;
+            Function._FullName = string.IsNullOrEmpty(check.FullName) ? string.Empty : check.FullName;
+            Function._Phone = string.IsNullOrEmpty(check.Phone) ? string.Empty : check.Phone;   
             Function._RoleId = check.RoleId ?? 0;
 
 

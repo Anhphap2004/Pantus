@@ -62,6 +62,8 @@ namespace Pantus.Controllers
             Function._MessageEmail = string.Empty;
             Function._Email = string.Empty;
             Function._Username = string.Empty;
+            Function._FullName = string.Empty;
+            Function._Phone = string.Empty;
             return Task.FromResult<IActionResult>(RedirectToAction("Index", "Home"));
         }
     }
