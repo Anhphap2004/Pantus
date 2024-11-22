@@ -1,0 +1,85 @@
+﻿@model Pantus.Models.TbBlog
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2 class="mb-0">Chi Tiết Blog</h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-md-3 text-muted">Tiêu đề</dt>
+                        <dd class="col-md-9">@Html.DisplayFor(model => model.Title)</dd>
+
+                        <dt class="col-md-3 text-muted">Alias</dt>
+                        <dd class="col-md-9">@Html.DisplayFor(model => model.Alias)</dd>
+
+                        <dt class="col-md-3 text-muted">Mô tả</dt>
+                        <dd class="col-md-9">@Html.DisplayFor(model => model.Description)</dd>
+
+                        <dt class="col-md-3 text-muted">Nội dung chi tiết</dt>
+                        <dd class="col-md-9">
+                            <div class="p-3 bg-light border rounded">
+                                @Html.Raw(Model.Detail)
+                            </div>
+                        </dd>
+
+                        <dt class="col-md-3 text-muted">Hình ảnh</dt>
+                        <dd class="col-md-9">
+                            <img src="@Model.Image" alt="Blog Image" class="img-fluid rounded shadow-sm" style="max-height: 200px;">
+                        </dd>
+
+                        <dt class="col-md-3 text-muted">SEO Tiêu đề</dt>
+                        <dd class="col-md-9">@Html.DisplayFor(model => model.SeoTitle)</dd>
+
+                        <dt class="col-md-3 text-muted">SEO Mô tả</dt>
+                        <dd class="col-md-9">@Html.DisplayFor(model => model.SeoDescription)</dd>
+
+                        <dt class="col-md-3 text-muted">SEO Từ khóa</dt>
+                        <dd class="col-md-9">@Html.DisplayFor(model => model.SeoKeywords)</dd>
+
+                        <dt class="col-md-3 text-muted">Ngày tạo</dt>
+                        <dd class="col-md-9">@Html.DisplayFor(model => model.CreatedDate)</dd>
+
+                        <dt class="col-md-3 text-muted">Người tạo</dt>
+                        <dd class="col-md-9">@Html.DisplayFor(model => model.CreatedBy)</dd>
+
+                        <dt class="col-md-3 text-muted">Ngày sửa</dt>
+                        <dd class="col-md-9">@Html.DisplayFor(model => model.ModifiedDate)</dd>
+
+                        <dt class="col-md-3 text-muted">Người sửa</dt>
+                        <dd class="col-md-9">@Html.DisplayFor(model => model.ModifiedBy)</dd>
+
+                        <dt class="col-md-3 text-muted">Trạng thái</dt>
+                        <dd class="col-md-9">
+                            @if (Model.IsActive)
+                            {
+                                <span class="badge bg-success">Kích hoạt</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Không kích hoạt</span>
+                            }
+                        </dd>
+
+                        <dt class="col-md-3 text-muted">Tài khoản</dt>
+                        <dd class="col-md-9">ID: @Html.DisplayFor(model => model.Account.AccountId)</dd>
+
+                        <dt class="col-md-3 text-muted">Danh mục</dt>
+                        <dd class="col-md-9">ID: @Html.DisplayFor(model => model.Category.CategoryId)</dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Edit" asp-route-id="@Model.BlogId" class="btn btn-warning me-3 px-4">Sửa</a>
+                    <a asp-action="Index" class="btn btn-secondary px-4">Quay lại</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

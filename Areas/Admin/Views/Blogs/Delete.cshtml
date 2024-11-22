@@ -1,0 +1,66 @@
+﻿@model Pantus.Models.TbBlog
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-danger text-white text-center">
+                    <h2 class="mb-0">Xác nhận xóa Blog</h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="text-center text-warning">Bạn có chắc chắn muốn xóa Blog này?</h4>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-md-4 text-muted">Tiêu đề</dt>
+                        <dd class="col-md-8">@Html.DisplayFor(model => model.Title)</dd>
+
+                        <dt class="col-md-4 text-muted">Alias</dt>
+                        <dd class="col-md-8">@Html.DisplayFor(model => model.Alias)</dd>
+
+                        <dt class="col-md-4 text-muted">Mô tả</dt>
+                        <dd class="col-md-8">@Html.DisplayFor(model => model.Description)</dd>
+
+                        <dt class="col-md-4 text-muted">Nội dung chi tiết</dt>
+                        <dd class="col-md-8">
+                            <div class="p-3 bg-light border rounded">
+                                @Html.Raw(Model.Detail)
+                            </div>
+                        </dd>
+
+                        <dt class="col-md-4 text-muted">Hình ảnh</dt>
+                        <dd class="col-md-8">
+                            <img src="@Model.Image" alt="Blog Image" class="img-fluid rounded shadow-sm" style="max-height: 200px;">
+                        </dd>
+
+                        <dt class="col-md-4 text-muted">Ngày tạo</dt>
+                        <dd class="col-md-8">@Html.DisplayFor(model => model.CreatedDate)</dd>
+
+                        <dt class="col-md-4 text-muted">Trạng thái</dt>
+                        <dd class="col-md-8">
+                            @if (Model.IsActive)
+                            {
+                                <span class="badge bg-success">Kích hoạt</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Không kích hoạt</span>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-center">
+                    <form asp-action="Delete" class="d-inline-block">
+                        <input type="hidden" asp-for="BlogId" />
+                        <button type="submit" class="btn btn-danger me-3 px-4">Xóa</button>
+                    </form>
+                    <a asp-action="Index" class="btn btn-secondary px-4">Quay lại</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
