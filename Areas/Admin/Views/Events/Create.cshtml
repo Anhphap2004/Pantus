@@ -1,7 +1,7 @@
-@model Pantus.Models.TbEvent
+﻿@model Pantus.Models.TbEvent
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo Mới";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -18,13 +18,12 @@
             <form asp-action="Create" class="p-4 border rounded shadow-sm" style="background-color: #fff8f0; border-color: orange;">
                 <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-3"></div>
 
-                <!-- Tiêu đề -->
                 <div class="form-group mb-3">
                     <label asp-for="Title" class="control-label"><i class="fas fa-heading"></i> Tên Sự Kiện</label>
                     <input asp-for="Title" class="form-control border-orange" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
-                <!-- Chọn ảnh -->
+
                 <div class="form-group mb-3">
                     <label asp-for="Image" class="control-label"><i class="fas fa-image"></i> Chọn Ảnh</label>
                     <div class="input-group">
@@ -35,71 +34,56 @@
                     </div>
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
+
                 <div class="form-group mb-3">
-                    <label asp-for="Location" class="control-label"><i class="fas fa-heading"></i>Địa Điểm</label>
+                    <label asp-for="Location" class="control-label"><i class="fas fa-heading"></i> Địa Điểm</label>
                     <input asp-for="Location" class="form-control border-orange" />
                     <span asp-validation-for="Location" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="CreatedBy" class="control-label"></label>
-                    <input asp-for="CreatedBy" class="form-control" />
-                    <span asp-validation-for="CreatedBy" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ModifiedDate" class="control-label"></label>
-                    <input asp-for="ModifiedDate" class="form-control" />
-                    <span asp-validation-for="ModifiedDate" class="text-danger"></span>
-                </div>
-            
-                <!-- Mô tả -->
+
                 <div class="form-group mb-3">
                     <label asp-for="Description" class="control-label"><i class="fas fa-file-alt"></i> Mô Tả</label>
-                    <input asp-for="Description" class="form-control border-orange"/>
+                    <input asp-for="Description" class="form-control border-orange" />
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
 
-          
                 <div class="form-group mb-3">
                     <label asp-for="Details" class="control-label">Chi Tiết</label>
                     <textarea asp-for="Details" class="form-control"></textarea>
                     <span asp-validation-for="Details" class="text-danger"></span>
                 </div>
-               
-               
 
-                <!-- Hiển thị -->
                 <div class="form-check mb-3">
                     <label class="form-check-label">
                         <input class="form-check-input" asp-for="IsActive" /> Hiển Thị
                     </label>
                 </div>
 
-                <!-- Nút tạo -->
                 <div class="text-center">
                     <button type="submit" class="btn btn-success px-4"><i class="fas fa-save"></i> Tạo Mới</button>
                 </div>
             </form>
 
-            <!-- Nút quay lại -->
             <div class="text-center mt-3">
                 <a asp-action="Index" class="btn btn-outline-danger"><i class="fas fa-arrow-left"></i> Quay Lại</a>
             </div>
         </div>
     </div>
 </div>
+
 <script>
     $('#Detail').summernote({
-      placeholder: 'Nhập Dữ Liệu Vào Đây Nhaaa',
-      tabsize: 2,
-      height: 120,
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'clear']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['table', ['table']],
-        ['insert', ['link', 'picture', 'video']],
-        ['view', ['fullscreen', 'codeview', 'help']]
-      ]
+        placeholder: 'Nhập Dữ Liệu Vào Đây Nhaaa',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
     });
 </script>

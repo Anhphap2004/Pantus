@@ -1,14 +1,14 @@
 ﻿@model Pantus.Models.TbBlog
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo bài viết mới";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container mt-5">
     <div class="text-center mb-4">
         <h1 class="text-primary" style="font-family: 'Playball', cursive; font-size: 36px;">
-            <i class="fas fa-plus-circle"></i> Tạo Bài Viết Mới
+            <i class="fas fa-plus-circle"></i> Tạo mới bài viết
         </h1>
         <hr class="w-25 mx-auto" style="border-top: 3px solid orange;">
     </div>
@@ -20,50 +20,56 @@
 
                 <!-- Tiêu đề -->
                 <div class="form-group mb-3">
-                    <label asp-for="Title" class="control-label"><i class="fas fa-heading"></i> Tên Bài Viết</label>
+                    <label asp-for="Title" class="control-label"><i class="fas fa-heading"></i> Tên bài viết</label>
                     <input asp-for="Title" class="form-control border-orange" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
+
                 <!-- Danh mục -->
                 <div class="form-group mb-3">
-                    <label asp-for="CategoryId" class="control-label"><i class="fas fa-list-alt"></i> Danh Mục</label>
+                    <label asp-for="CategoryId" class="control-label"><i class="fas fa-list-alt"></i> Danh mục</label>
                     <select asp-for="CategoryId" class="form-control border-orange" asp-items="ViewBag.CategoryId">
-                        <option value="0" selected>  Chọn Danh Mục  </option>
+                        <option value="0" selected>Chọn danh mục</option>
                     </select>
                     <span asp-validation-for="CategoryId" class="text-danger"></span>
                 </div>
+
                 <!-- Chọn ảnh -->
                 <div class="form-group mb-3">
-                    <label asp-for="Image" class="control-label"><i class="fas fa-image"></i> Chọn Ảnh</label>
+                    <label asp-for="Image" class="control-label"><i class="fas fa-image"></i> Chọn ảnh</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <button type="button" class="btn btn-success" onclick="openDialog()">Chọn Ảnh</button>
+                            <button type="button" class="btn btn-success" onclick="openDialog()">Chọn ảnh</button>
                         </div>
                         <input type="text" class="form-control border-orange" id="file_input" asp-for="Image" />
                     </div>
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
+
+                <!-- Alias -->
                 <div class="form-group mb-3">
-                    <label asp-for="Alias" class="control-label"><i class="fas fa-heading"></i>Alias</label>
+                    <label asp-for="Alias" class="control-label"><i class="fas fa-heading"></i> Alias</label>
                     <input asp-for="Alias" class="form-control border-orange" />
                     <span asp-validation-for="Alias" class="text-danger"></span>
                 </div>
+
+                <!-- Người tạo -->
                 <div class="form-group">
-                    <label asp-for="CreatedBy" class="control-label"></label>
+                    <label asp-for="CreatedBy" class="control-label">Người tạo</label>
                     <input asp-for="CreatedBy" class="form-control" />
                     <span asp-validation-for="CreatedBy" class="text-danger"></span>
                 </div>
-    
 
                 <!-- Mô tả -->
                 <div class="form-group mb-3">
-                    <label asp-for="Description" class="control-label"><i class="fas fa-file-alt"></i> Mô Tả</label>
+                    <label asp-for="Description" class="control-label"><i class="fas fa-file-alt"></i> Mô tả</label>
                     <input asp-for="Description" class="form-control border-orange" />
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
 
+                <!-- Chi tiết -->
                 <div class="form-group mb-3">
-                    <label asp-for="Detail" class="control-label">Chi Tiết</label>
+                    <label asp-for="Detail" class="control-label">Chi tiết</label>
                     <textarea asp-for="Detail" class="form-control"></textarea>
                     <span asp-validation-for="Detail" class="text-danger"></span>
                 </div>
@@ -71,36 +77,37 @@
                 <!-- Hiển thị -->
                 <div class="form-check mb-3">
                     <label class="form-check-label">
-                        <input class="form-check-input" asp-for="IsActive" /> Hiển Thị
+                        <input class="form-check-input" asp-for="IsActive" /> Hiển thị
                     </label>
                 </div>
 
                 <!-- Nút tạo -->
                 <div class="text-center">
-                    <button type="submit" class="btn btn-success px-4"><i class="fas fa-save"></i> Tạo Mới</button>
+                    <button type="submit" class="btn btn-success px-4"><i class="fas fa-save"></i> Tạo mới</button>
                 </div>
             </form>
 
             <!-- Nút quay lại -->
             <div class="text-center mt-3">
-                <a asp-action="Index" class="btn btn-outline-danger"><i class="fas fa-arrow-left"></i> Quay Lại</a>
+                <a asp-action="Index" class="btn btn-outline-danger"><i class="fas fa-arrow-left"></i> Quay lại</a>
             </div>
         </div>
     </div>
 </div>
+
 <script>
     $('#Detail').summernote({
-      placeholder: 'Nhập Dữ Liệu Vào Đây Nhaaa',
-      tabsize: 2,
-      height: 120,
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'clear']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['table', ['table']],
-        ['insert', ['link', 'picture', 'video']],
-        ['view', ['fullscreen', 'codeview', 'help']]
-      ]
+        placeholder: 'Nhập dữ liệu vào đây...',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
     });
 </script>
