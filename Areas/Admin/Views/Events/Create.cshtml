@@ -24,14 +24,21 @@
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label asp-for="Image" class="control-label"><i class="fas fa-image"></i> Chọn Ảnh</label>
+                <div class="form-group">
+                    <label asp-for="Image" class="control-label">Chọn Ảnh</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button type="button" class="btn btn-success" onclick="openDialog()">Chọn Ảnh</button>
+                        <!-- Nút mở elFinder -->
+                        <div class="input-group-append">
+                            <button type="button" id="btn-select-image" class="btn btn-primary">
+                                <i class="fas fa-folder-open"></i> Chọn ảnh
+                            </button>
                         </div>
-                        <input type="text" class="form-control border-orange" id="file_input" asp-for="Image" />
+                        <!-- Input hiển thị đường dẫn ảnh -->
+                        <input type="text" class="form-control" asp-for="Image" id="Image" placeholder="Đường dẫn hình ảnh" />
+
                     </div>
+                    <!-- Hiển thị ảnh xem trước -->
+                    <img id="preview-image" src="" alt="Preview Image" class="img-thumbnail mt-3" style="max-height: 200px; display: none;" />
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
 
@@ -72,7 +79,7 @@
 </div>
 
 <script>
-    $('#Detail').summernote({
+    $('#Details').summernote({
         placeholder: 'Nhập Dữ Liệu Vào Đây Nhaaa',
         tabsize: 2,
         height: 120,
@@ -87,3 +94,53 @@
         ]
     });
 </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btn-select-image').on('click', function () {
+            $('<div/>').dialogelfinder({
+                url: '/Admin/el-finder-file-system/connector',
+                lang: 'vi',
+                resizable: true,
+                commandsOptions: {
+                    getfile: {
+                        oncomplete: 'close',
+                        folders: false
+                    }
+                },
+                getFileCallback: function (file) {
+                    $('#Image').val(file.url);
+                    $('#preview-image')
+                        .attr('src', file.url)
+                        .show();
+                }
+            });
+
+            // Chỉnh sửa kích thước bằng CSS sau khi hiển thị elFinder
+            setTimeout(function () {
+                $('#elfinder').closest('.ui-dialog').css({
+                    'width': '60%',    // Thay đổi chiều rộng của cửa sổ
+                    'height': '250px'  // Thay đổi chiều cao của cửa sổ
+                });
+            }, 200); // Đảm bảo rằng elFinder đã được khởi tạo
+        });
+    });
+</script>
+
+
+@section Scripts {
+    <link rel="stylesheet" href="~/admin/lib/snote/jquery.min.js" />
+    <link rel="stylesheet" href="~/admin/lib/snote/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="~/admin/lib/snote/summernote-bs4.min.js" />
+    <link rel="stylesheet" href="~/admin/lib/snote/summernote-bs4.min.css" />
+
+    <link rel="stylesheet" href="~/admin/lib/jqueryui/themes/themes/base/theme.css" />
+    <link rel="stylesheet" href="~/admin/lib/jqueryui/themes/jquery-ui.css" />
+    <link rel="stylesheet" href="~/admin/lib/elfinder/css/elfinder.full.css" />
+    @* <link rel="stylesheet" href="~/admin/lib/elfinder/css/theme.min.css" /> *@
+
+    <link rel="stylesheet" href="~/admin/elfinder-material-theme/Material/css/theme-light.min.css" />
+
+    @* <script src="~/admin/lib/jquery/dist/jquery.min.js"></script> *@
+    <script src="~/admin/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/admin/lib/elfinder/js/elfinder.min.js"></script>
+}
