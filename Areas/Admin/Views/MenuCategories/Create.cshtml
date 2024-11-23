@@ -1,0 +1,61 @@
+﻿@model Pantus.Models.TbMenuCategory
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class=" text-white text-center py-4">
+                    <h4 class="mb-0 " style="font-family: 'Playball', cursive; font-size: 36px;"><i class="bi bi-plus-circle"></i> Thêm danh mục mới</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <!-- Title -->
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label fw-bold">Tiêu đề</label>
+                            <input asp-for="Title" class="form-control" placeholder="Nhập tiêu đề" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <!-- Alias -->
+                        <div class="mb-3">
+                            <label asp-for="Alias" class="form-label fw-bold">Alias (URL)</label>
+                            <input asp-for="Alias" class="form-control" placeholder="Nhập Alias (URL)" />
+                            <span asp-validation-for="Alias" class="text-danger"></span>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
+                            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Nhập mô tả"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <!-- IsActive -->
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" asp-for="IsActive" id="IsActiveCheck" />
+                            <label class="form-check-label" for="IsActiveCheck">@Html.DisplayNameFor(model => model.IsActive)</label>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-save"></i> Lưu danh mục
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left-circle"></i> Quay lại danh sách
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

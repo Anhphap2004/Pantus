@@ -1,0 +1,66 @@
+﻿@model Pantus.Models.TbMenuCategory
+
+@{
+    ViewData["Title"] = "Chỉnh sửa danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center mb-4">@ViewData["Title"]</h1>
+
+<h4 class="text-center text-muted" style="font-family: 'Playball', cursive; font-size: 36px;">Sửa Danh Mục</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Edit" class="p-4 border rounded shadow-sm bg-light">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <!-- Hidden Field for CategoryId -->
+            <input type="hidden" asp-for="CategoryId" />
+
+            <!-- Title Field -->
+            <div class="form-group mb-3">
+                <label asp-for="Title" class="form-label fw-bold">Tiêu đề</label>
+                <input asp-for="Title" class="form-control" placeholder="Nhập tiêu đề" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <!-- Alias Field -->
+            <div class="form-group mb-3">
+                <label asp-for="Alias" class="form-label fw-bold">Alias</label>
+                <input asp-for="Alias" class="form-control" placeholder="Nhập alias" />
+                <span asp-validation-for="Alias" class="text-danger"></span>
+            </div>
+
+            <!-- Description Field -->
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
+                <textarea asp-for="Description" class="form-control" placeholder="Nhập mô tả" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <!-- IsActive Checkbox -->
+            <div class="form-check mb-3">
+                <input class="form-check-input" asp-for="IsActive" id="IsActiveCheckbox" />
+                <label class="form-check-label" for="IsActiveCheckbox">
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left-circle"></i> Quay lại
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Lưu thay đổi
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

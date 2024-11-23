@@ -1,0 +1,62 @@
+﻿@model Pantus.Models.TbMenuCategory
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="text-white text-center">
+                    <h4 class="mb-0" style=" font-family: 'Playball' , cursive; font-size: 36px;"><i class="bi bi-trash"></i> Xác nhận xóa</h4>
+                </div>
+                <div class="card-body">
+                    <h3 class="text-center">Bạn có chắc chắn muốn xóa mục này?</h3>
+                    <hr />
+
+                    <div class="mb-4">
+                        <dl class="row">
+                            <dt class="col-sm-3">Tiêu đề</dt>
+                            <dd class="col-sm-9">@Html.DisplayFor(model => model.Title)</dd>
+
+                            <dt class="col-sm-3">Alias</dt>
+                            <dd class="col-sm-9">@Html.DisplayFor(model => model.Alias)</dd>
+
+                            <dt class="col-sm-3">Mô tả</dt>
+                            <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+
+                            <dt class="col-sm-3">Hình ảnh</dt>
+                            <dd class="col-sm-9">@Html.DisplayFor(model => model.Image)</dd>
+
+                            <dt class="col-sm-3">Trạng thái</dt>
+                            <dd class="col-sm-9">
+                                @if (Model.IsActive)
+                                {
+                                    <span class="badge bg-success">Hoạt động</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Không hoạt động</span>
+                                }
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="CategoryId" />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash"></i> Xóa
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left-circle"></i> Quay lại danh sách
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
