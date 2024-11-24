@@ -1,0 +1,86 @@
+﻿@model Pantus.Models.TbAccount
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center my-4 text-danger">Chỉnh sửa tài khoản</h1>
+
+<div class="container">
+    <form asp-action="Edit" class="row g-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="AccountId" />
+
+        <div class="col-md-6">
+            <label asp-for="Username" class="form-label text-danger"></label>
+            <input asp-for="Username" class="form-control text-success" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Password" class="form-label text-danger"></label>
+            <input asp-for="Password" class="form-control text-success" type="password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+       @*  <div class="col-md-6">
+            <label asp-for="Password" class="form-label text-danger"></label>
+            <input asp-for="Password" class="form-control text-success" type="text" value="@Model.Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div> *@
+
+        <div class="col-md-6">
+            <label asp-for="FullName" class="form-label text-danger"></label>
+            <input asp-for="FullName" class="form-control text-success" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Phone" class="form-label text-danger"></label>
+            <input asp-for="Phone" class="form-control text-success" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Email" class="form-label text-danger"></label>
+            <input asp-for="Email" class="form-control text-success" type="email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="RoleId" class="form-label text-danger"></label>
+            <select asp-for="RoleId" class="form-select text-success" asp-items="ViewBag.RoleId"></select>
+            <span asp-validation-for="RoleId" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="LastLogin" class="form-label text-danger"></label>
+            <input asp-for="LastLogin" class="form-control text-success" type="datetime-local" />
+            <span asp-validation-for="LastLogin" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Image" class="form-label text-danger"></label>
+            <input asp-for="Image" class="form-control text-success" type="file" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 form-check">
+            <input class="form-check-input text-success" asp-for="IsActive" />
+            <label class="form-check-label text-danger" asp-for="IsActive"></label>
+        </div>
+
+        <div class="col-12">
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

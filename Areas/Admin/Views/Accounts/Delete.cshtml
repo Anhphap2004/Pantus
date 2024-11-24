@@ -1,0 +1,95 @@
+﻿@model Pantus.Models.TbAccount
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-danger text-center">Xóa tài khoản</h1>
+<h4 class="text-warning text-center">Bạn có chắc chắn muốn xóa tài khoản này?</h4>
+<hr />
+
+<div class="container">
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="AccountId" />
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label fw-bold">@Html.DisplayNameFor(model => model.Username):</label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.Username</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label fw-bold">@Html.DisplayNameFor(model => model.Password):</label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.Password</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label fw-bold">@Html.DisplayNameFor(model => model.FullName):</label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.FullName</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label fw-bold">@Html.DisplayNameFor(model => model.Phone):</label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.Phone</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label fw-bold">@Html.DisplayNameFor(model => model.Email):</label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.Email</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label fw-bold">@Html.DisplayNameFor(model => model.LastLogin):</label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.LastLogin</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label fw-bold">@Html.DisplayNameFor(model => model.Image):</label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.Image</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label fw-bold">@Html.DisplayNameFor(model => model.IsActive):</label>
+            <div class="col-sm-10">
+                @if (Model.IsActive)
+                {
+                    <span class="text-success">✔️ Active</span>
+                }
+                else
+                {
+                    <span class="text-danger">❌ Inactive</span>
+                }
+            </div>
+        </div>
+
+
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label fw-bold">@Html.DisplayNameFor(model => model.Role):</label>
+            <div class="col-sm-10">
+                <p class="form-control-plaintext">@Model.Role?.RoleName</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-danger">Xóa</button>
+                <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+            </div>
+        </div>
+    </form>
+</div>

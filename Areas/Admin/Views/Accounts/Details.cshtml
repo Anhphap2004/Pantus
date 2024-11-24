@@ -1,0 +1,89 @@
+﻿@model Pantus.Models.TbAccount
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mb-4 text-center  text-danger">Chi Tiết</h1>
+
+<div class="container mx-auto">
+    <h4>TbAccount</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3 fw-bold">
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt class="col-sm-3 fw-bold">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt class="col-sm-3 fw-bold">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt class="col-sm-3 fw-bold">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt class="col-sm-3 fw-bold">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt class="col-sm-3 fw-bold">
+            @Html.DisplayNameFor(model => model.LastLogin)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.LastLogin)
+        </dd>
+
+        <dt class="col-sm-3 fw-bold">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt class="col-sm-3 fw-bold">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd class="col-sm-9">
+            @if (Model.IsActive)
+            {
+                <span class="text-success">✔️ Active</span>
+            }
+            else
+            {
+                <span class="text-danger">❌ Inactive</span>
+            }
+        </dd>
+
+        <dt class="col-sm-3 fw-bold">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Role.RoleId)
+        </dd>
+    </dl>
+</div>
+
+<div class="container mx-auto my-6">
+    <a asp-action="Edit" asp-route-id="@Model.AccountId" class="btn btn-warning">Edit</a> |
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
