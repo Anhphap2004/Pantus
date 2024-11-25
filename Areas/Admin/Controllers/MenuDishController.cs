@@ -14,6 +14,8 @@ namespace Pantus.Areas.Admin.Controllers
     {
         private readonly PantusContext _context;
 
+        public int Tabnine { get; private set; }
+
         public MenuDishController(PantusContext context)
         {
             _context = context;
@@ -54,7 +56,7 @@ namespace Pantus.Areas.Admin.Controllers
         {
             if (!Function.IsLogin())
                 return RedirectToAction("Index", "Login");
-            ViewData["CategoryId"] = new SelectList(_context.TbMenuCategories, "CategoryId", "CategoryId");
+            ViewData["CategoryId"] = new SelectList(_context.TbMenuCategories, "CategoryId", "Title");
             return View();
         }
 
@@ -69,7 +71,10 @@ namespace Pantus.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Login");
             if (ModelState.IsValid)
             {
-                tbMenuItem.Alias = Pantus.Utilities.Function.TitleSlugGenerationAlias(tbMenuItem.Title);
+                 if (tbMenuItem.Title != null)//+
+                {//+
+                    tbMenuItem.Alias = Pantus.Utilities.Function.TitleSlugGenerationAlias(tbMenuItem.Title);//+
+                }//+
                 _context.Add(tbMenuItem);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

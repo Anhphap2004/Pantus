@@ -14,7 +14,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                 <div class="row mb-3">
-                    <label asp-for="Username" class="col-sm-3 col-form-label text-end"></label>
+                    <label asp-for="Username" class="col-sm-3 col-form-label text-end">Tên đăng nhập</label>
                     <div class="col-sm-9">
                         <input asp-for="Username" class="form-control" />
                         <span asp-validation-for="Username" class="text-danger"></span>
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label asp-for="Password" class="col-sm-3 col-form-label text-end"></label>
+                    <label asp-for="Password" class="col-sm-3 col-form-label text-end">Mật khẩu</label>
                     <div class="col-sm-9">
                         <input asp-for="Password" type="password" class="form-control" />
                         <span asp-validation-for="Password" class="text-danger"></span>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label asp-for="FullName" class="col-sm-3 col-form-label text-end"></label>
+                    <label asp-for="FullName" class="col-sm-3 col-form-label text-end">Họ và tên</label>
                     <div class="col-sm-9">
                         <input asp-for="FullName" class="form-control" />
                         <span asp-validation-for="FullName" class="text-danger"></span>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label asp-for="Phone" class="col-sm-3 col-form-label text-end"></label>
+                    <label asp-for="Phone" class="col-sm-3 col-form-label text-end">Số điện thoại</label>
                     <div class="col-sm-9">
                         <input asp-for="Phone" class="form-control" />
                         <span asp-validation-for="Phone" class="text-danger"></span>
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label asp-for="Email" class="col-sm-3 col-form-label text-end"></label>
+                    <label asp-for="Email" class="col-sm-3 col-form-label text-end">Email</label>
                     <div class="col-sm-9">
                         <input asp-for="Email" class="form-control" />
                         <span asp-validation-for="Email" class="text-danger"></span>
@@ -54,14 +54,14 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label asp-for="RoleId" class="col-sm-3 col-form-label text-end"></label>
+                    <label asp-for="RoleId" class="col-sm-3 col-form-label text-end">Vai trò</label>
                     <div class="col-sm-9">
                         <select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label asp-for="LastLogin" class="col-sm-3 col-form-label text-end"></label>
+                    <label asp-for="LastLogin" class="col-sm-3 col-form-label text-end">Lần đăng nhập cuối</label>
                     <div class="col-sm-9">
                         <input asp-for="LastLogin" class="form-control" />
                         <span asp-validation-for="LastLogin" class="text-danger"></span>
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label asp-for="Image" class="col-sm-3 col-form-label text-end"></label>
+                    <label asp-for="Image" class="col-sm-3 col-form-label text-end">Ảnh đại diện</label>
                     <div class="col-sm-9">
                         <input asp-for="Image" class="form-control" />
                         <span asp-validation-for="Image" class="text-danger"></span>
@@ -80,7 +80,7 @@
                     <div class="col-sm-3"></div>
                     <div class="col-sm-9 form-check">
                         <input class="form-check-input" asp-for="IsActive" />
-                        <label class="form-check-label" asp-for="IsActive"></label>
+                        <label class="form-check-label" asp-for="IsActive">Kích hoạt tài khoản</label>
                     </div>
                 </div>
 

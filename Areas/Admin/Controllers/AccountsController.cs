@@ -48,9 +48,11 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Accounts/Create
         public IActionResult Create()
         {
-            ViewData["RoleId"] = new SelectList(_context.TbRoles, "RoleId", "RoleId");
+            // Lấy danh sách các vai trò từ database và tạo SelectListItem
+            ViewData["RoleId"] = new SelectList(_context.TbRoles, "RoleId", "RoleName");
             return View();
         }
+
 
         // POST: Admin/Accounts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -71,20 +73,23 @@ namespace Pantus.Areas.Admin.Controllers
 
         // GET: Admin/Accounts/Edit/5
         public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+{
+    if (id == null)
+    {
+        return NotFound();
+    }
 
-            var tbAccount = await _context.TbAccounts.FindAsync(id);
-            if (tbAccount == null)
-            {
-                return NotFound();
-            }
-            ViewData["RoleId"] = new SelectList(_context.TbRoles, "RoleId", "RoleId", tbAccount.RoleId);
-            return View(tbAccount);
-        }
+    var tbAccount = await _context.TbAccounts.FindAsync(id);
+    if (tbAccount == null)
+    {
+        return NotFound();
+    }
+
+    // Tạo SelectList với RoleName thay vì RoleId
+    ViewData["RoleId"] = new SelectList(_context.TbRoles, "RoleId", "RoleName", tbAccount.RoleId);
+    return View(tbAccount);
+}
+
 
         // POST: Admin/Accounts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -121,7 +126,7 @@ namespace Pantus.Areas.Admin.Controllers
             ViewData["RoleId"] = new SelectList(_context.TbRoles, "RoleId", "RoleId", tbAccount.RoleId);
             return View(tbAccount);
         }
-        
+
         // GET: Admin/Accounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -151,7 +156,7 @@ namespace Pantus.Areas.Admin.Controllers
             {
                 _context.TbAccounts.Remove(tbAccount);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -161,6 +166,5 @@ namespace Pantus.Areas.Admin.Controllers
             return _context.TbAccounts.Any(e => e.AccountId == id);
         }
     }
-    
+
 }
- 
