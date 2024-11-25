@@ -121,7 +121,7 @@ namespace Pantus.Areas.Admin.Controllers
             ViewData["RoleId"] = new SelectList(_context.TbRoles, "RoleId", "RoleId", tbAccount.RoleId);
             return View(tbAccount);
         }
-
+        
         // GET: Admin/Accounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -151,7 +151,7 @@ namespace Pantus.Areas.Admin.Controllers
             {
                 _context.TbAccounts.Remove(tbAccount);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -161,4 +161,6 @@ namespace Pantus.Areas.Admin.Controllers
             return _context.TbAccounts.Any(e => e.AccountId == id);
         }
     }
+    
 }
+ 

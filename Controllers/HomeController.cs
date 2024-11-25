@@ -66,5 +66,6 @@ namespace Pantus.Controllers
             Function._Phone = string.Empty;
             return Task.FromResult<IActionResult>(RedirectToAction("Index", "Home"));
         }
+        
     }
 }
