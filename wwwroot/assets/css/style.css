@@ -77,6 +77,19 @@ body {
     right: 0;
     z-index: 9999
 }
+.AnhhPhapp-blog-left {
+    position: absolute;
+    top: 750px;
+    left: 0;
+    z-index: 9999
+}
+
+.AnhhPhapp-blog-right {
+    position: absolute;
+    top: 660px;
+    right: 0;
+    z-index: 9999
+}
 
 .icon_glass:hover {
     background-color: brown;

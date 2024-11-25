@@ -18,6 +18,23 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+app.Lifetime.ApplicationStarted.Register(() =>
+{
+    var url = "http://localhost:5068"; // Hoặc HTTPS URL của bạn
+    try
+    {
+        var psi = new System.Diagnostics.ProcessStartInfo
+        {
+            FileName = url,
+            UseShellExecute = true
+        };
+        System.Diagnostics.Process.Start(psi);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Failed to launch browser: {ex.Message}");
+    }
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

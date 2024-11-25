@@ -12,54 +12,76 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <form asp-action="Edit" class="p-4 border rounded shadow-sm" style="background-color: #fff8f0; border-color: orange;">
                 <input type="hidden" asp-for="MenuId" />
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                <div class="form-group">
-                    <label asp-for="Title" class="control-label">Tiêu Đề</label>
-                    <input asp-for="Title" class="form-control text-danger" style="border-color: orange;" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
+                <!-- Tiêu Đề -->
+                <div class="form-group row">
+                    <label asp-for="Title" class="col-sm-3 col-form-label">Tiêu Đề</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Title" class="form-control" style="border-color: orange; color: red;" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="Alias" class="control-label">Alias</label>
-                    <input asp-for="Alias" class="form-control text-secondary" style="border-color: orange;" />
-                    <span asp-validation-for="Alias" class="text-danger"></span>
+                <!-- Alias -->
+                <div class="form-group row">
+                    <label asp-for="Alias" class="col-sm-3 col-form-label">Alias</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Alias" class="form-control" style="border-color: orange; color: red;" />
+                        <span asp-validation-for="Alias" class="text-danger"></span>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label">Mô Tả</label>
-                    <input asp-for="Description" class="form-control text-danger" style="border-color: orange;" />
-                    <span asp-validation-for="Description" class="text-danger"></span>
+                <!-- Mô Tả -->
+                <div class="form-group row">
+                    <label asp-for="Description" class="col-sm-3 col-form-label">Mô Tả</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Description" class="form-control" style="border-color: orange; color: red;" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="Levels" class="control-label">Mức</label>
-                    <input asp-for="Levels" class="form-control text-secondary" style="border-color: orange;" />
-                    <span asp-validation-for="Levels" class="text-danger"></span>
+                <!-- Mức -->
+                <div class="form-group row">
+                    <label asp-for="Levels" class="col-sm-3 col-form-label">Mức</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Levels" class="form-control" style="border-color: orange; color: red;" />
+                        <span asp-validation-for="Levels" class="text-danger"></span>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="ParentId" class="control-label">Menu Cha</label>
-                    <input asp-for="ParentId" class="form-control text-success" style="border-color: orange;" />
-                    <span asp-validation-for="ParentId" class="text-danger"></span>
+                <!-- Menu Cha -->
+                <div class="form-group row">
+                    <label asp-for="ParentId" class="col-sm-3 col-form-label">Menu Cha</label>
+                    <div class="col-sm-9">
+                        <input asp-for="ParentId" class="form-control" style="border-color: orange; color: red;" />
+                        <span asp-validation-for="ParentId" class="text-danger"></span>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="Position" class="control-label">Vị Trí</label>
-                    <input asp-for="Position" class="form-control text-success" style="border-color: orange;" />
-                    <span asp-validation-for="Position" class="text-danger"></span>
+                <!-- Vị Trí -->
+                <div class="form-group row">
+                    <label asp-for="Position" class="col-sm-3 col-form-label">Vị Trí</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Position" class="form-control" style="border-color: orange; color: red;" />
+                        <span asp-validation-for="Position" class="text-danger"></span>
+                    </div>
                 </div>
 
-                <div class="form-group form-check">
-                    <input class="form-check-input" asp-for="IsActive" style="border-color: orange;" />
-                    <label asp-for="IsActive" class="form-check-label text-success">Hiển Thị</label>
+                <!-- Hiển Thị -->
+                <div class="form-group row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9 form-check">
+                        <input class="form-check-input" asp-for="IsActive" style="border-color: orange;" />
+                        <label asp-for="IsActive" class="form-check-label text-success">Hiển Thị</label>
+                    </div>
                 </div>
 
                 <div class="form-group text-center">
-                    <input type="submit" value="Tạo Mới" class="btn btn-outline-success px-4" />
+                    <input type="submit" value="Lưu Lại" class="btn btn-outline-success px-4" />
                 </div>
             </form>
 
@@ -69,4 +91,3 @@
         </div>
     </div>
 </div>
-
