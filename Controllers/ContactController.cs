@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pantus.Models;
 using System.Diagnostics;
-namespace Harmic.Controllers
+namespace Pantus.Controllers
 {
     public class ContactController : Controller
     {

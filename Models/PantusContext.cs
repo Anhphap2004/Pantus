@@ -266,7 +266,11 @@ public partial class PantusContext : DbContext
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.ModifiedBy).HasMaxLength(150);
             entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
-            entity.Property(e => e.TotalAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.Phone).HasColumnName("Phone");
+            entity.Property(e => e.Settable).HasColumnName("Settable");
+            entity.Property(e => e.FullName).HasMaxLength(150);
+            entity.Property(e => e.Message).HasMaxLength(250);
+            
 
             entity.HasOne(d => d.Customer).WithMany(p => p.TbOrders)
                 .HasForeignKey(d => d.CustomerId)

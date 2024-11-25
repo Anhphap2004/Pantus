@@ -1,23 +1,49 @@
 ﻿@model IEnumerable<Pantus.Models.TbMenuItem>
-@foreach(var p in Model)
-{
-    String sUrl = $"/menu/{p.Alias}-{p.MenuItemId}.html";
-    <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.1s">
-                <div class="menu-item d-flex align-items-center">
-            <a href="@sUrl">
-                <img class="flex-shrink-0 rounded-circle" src="@p.Image" alt="" style="width: 100px; height: auto; object-fit: cover;">
-            </a>
 
-            <div class="w-100 d-flex flex-column text-start ps-4">
-                        <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
-                            <h4>@p.Title</h4>
-                            <h4 class="text-primary">
-                        @string.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", p.Price)
-                    </h4>
-                        </div>
-                        <p class="mb-0">@p.Description</p>
+<div class="container">
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            String sUrl = $"/menu/{p.Alias}-{p.MenuItemId}.html";
+
+            <div class="col-lg-3 col-md-4 col-sm-6 wow bounceInUp mb-4" data-wow-delay="0.1s">
+                <div class="menu-item text-center p-4 border rounded shadow">
+                    <!-- Hình ảnh lớn, hình vuông với bo góc -->
+                    <a href="@sUrl">
+                        <img class="img-fluid mb-3 rounded-3" src="@p.Image" alt="@p.Title"
+                             style="width: 250px; height: 200px; object-fit: cover;">
+                    </a>
+
+                    <!-- Nội dung tiêu đề -->
+                    <div class="w-100">
+                        <h5 class="fw-bold text-dark mb-2">@p.Title</h5>
+
+                        <!-- Nút giá tiền -->
+                        @if (p.PriceSale > 0 && p.PriceSale < p.Price)
+                        {
+                            <div>
+                                <!-- Giá gốc (gạch ngang) -->
+                                <span class="text-danger text-decoration-line-through me-2">
+                                    @string.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", p.Price)
+                                </span>
+
+                                <!-- Giá khuyến mãi -->
+                                <a href="@sUrl" class="btn btn-success btn-sm">
+                                    @string.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", p.PriceSale)
+                                </a>
+                            </div>
+                        }
+                        else
+                        {
+                            <!-- Nếu không có giá khuyến mãi -->
+                            <a href="@sUrl" class="btn btn-primary btn-sm">
+                                @string.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", p.Price)
+                            </a>
+                        }
+
                     </div>
                 </div>
             </div>
-           
-}
+        }
+    </div>
+</div>

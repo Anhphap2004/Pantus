@@ -11,9 +11,15 @@ public partial class TbOrder
 
     public int? TableId { get; set; }
 
-    public decimal? TotalAmount { get; set; }
+    public int? Phone { get; set; }
 
     public int? OrderStatusId { get; set; }
+
+    public int? Settable { get; set; }
+
+    public string? FullName { get; set; }
+
+    public string? Message { get; set; }
 
     public DateTime? CreatedDate { get; set; }
 
@@ -24,6 +30,7 @@ public partial class TbOrder
     public string? ModifiedBy { get; set; }
 
     public virtual TbCustomer? Customer { get; set; }
+
 
     public virtual TbOrderStatus? OrderStatus { get; set; }
 
