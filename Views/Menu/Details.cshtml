@@ -123,25 +123,76 @@
             </div>
         }
     </div>
+
     <!-- Khu vực thêm review -->
     <div style="margin-top: 40px; text-align: left;">
         <h2 style="margin-bottom: 20px; font-size: 20px; font-weight: bold;">Viết Đánh Giá</h2>
-        <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+        <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="hidden" id="c_menuid" name="menuid" value="@ViewBag.menuid" />
             <div>
-                <input type="text" name="name" placeholder="Tên của bạn" required
+                <input id="c_name" type="text" name="name" placeholder="Tên của bạn" required
                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
             </div>
             <div>
-                <input type="email" name="email" placeholder="Email của bạn" required
+                <input id="c_phone" type="number" name="number" placeholder="Số điện thoại của bạn" required
                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
             </div>
             <div>
-                <textarea name="review" placeholder="Viết đánh giá của bạn ở đây..." required
+                <input id="c_rating" type="number" name="rating" placeholder="Đánh Giá ⭐ của bạn" required
+                       style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+            </div>
+            <div>
+                <textarea id="c_message" name="review" placeholder="Viết đánh giá của bạn ở đây..." required
                           style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; min-height: 100px;"></textarea>
             </div>
-            <button type="submit" style="background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+            <button id="c_submit" type="submit"
+                    style="background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
                 Gửi Đánh Giá
             </button>
         </form>
     </div>
 </div>
+
+
+@section Scripts {
+    <script>
+             $(document).ready(function () {
+            $("#c_submit").click(function () {
+                // Lấy giá trị từ các input
+                let _name = $("#c_name").val();
+                let _phone = $("#c_phone").val();
+                let _rating = $("#c_rating").val();
+                let _message = $("#c_message").val();
+                let _menuid = $("#c_menuid").val();  // Lấy giá trị blogId từ input ẩn
+
+                // Gửi dữ liệu qua AJAX
+                $.ajax({
+                    url: "/Menu/Create", // URL endpoint trong Controller
+                    type: "POST",           // Phương thức POST
+                    data: {
+                        menuid: _menuid,  // Gửi thêm blogId vào controller
+                        name: _name,
+                        phone: _phone,
+                        rating: _rating,
+                        message: _message
+                    },
+                    success: function (result) {
+                        if (result.status) { // Nếu trả về thành công
+                            $("#c_name").val(""); // Reset các ô input
+                            $("#c_phone").val("");
+                            $("#c_email").val("");
+                            $("#c_message").val("");
+                            toastr.success('Gửi thành công!');
+                        } else { // Nếu thất bại
+                            toastr.error('Gửi không thành công!');
+                        }
+                    },
+                    error: function () {
+                        toastr.error('Có lỗi xảy ra, vui lòng thử lại!');
+                    }
+                });
+            });
+        });
+
+    </script>
+    }

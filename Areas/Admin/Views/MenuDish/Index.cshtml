@@ -39,7 +39,16 @@
                 <tr>
                     <td>@(i++)</td>
                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Category.Title)</td>
+                    <td>
+                        @if (item.Category != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.Category.Title)
+                        }
+                        else
+                        {
+                            @:N/A
+                        }
+                    </td>
                     <td>
                         <img src="@item.Image" alt="@item.Title" style="width: 60px; height: auto; border-radius: 5px;" />
                     </td>
