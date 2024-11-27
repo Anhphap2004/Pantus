@@ -7,24 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pantus.Models;
 
-namespace Pantus.Controllers
+namespace Pantus.Areas.Admin.Controllers
 {
-    public class TablesController : Controller
+    [Area("Admin")]
+    public class BookingController : Controller
     {
         private readonly PantusContext _context;
 
-        public TablesController(PantusContext context)
+        public BookingController(PantusContext context)
         {
             _context = context;
         }
 
-        // GET: Tables
+        // GET: Admin/Booking
         public async Task<IActionResult> Index()
         {
             return View(await _context.TbTables.ToListAsync());
         }
 
-        // GET: Tables/Details/5
+        // GET: Admin/Booking/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,13 +43,13 @@ namespace Pantus.Controllers
             return View(tbTable);
         }
 
-        // GET: Tables/Create
+        // GET: Admin/Booking/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Tables/Create
+        // POST: Admin/Booking/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,7 +65,7 @@ namespace Pantus.Controllers
             return View(tbTable);
         }
 
-        // GET: Tables/Edit/5
+        // GET: Admin/Booking/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,7 +81,7 @@ namespace Pantus.Controllers
             return View(tbTable);
         }
 
-        // POST: Tables/Edit/5
+        // POST: Admin/Booking/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -115,7 +116,7 @@ namespace Pantus.Controllers
             return View(tbTable);
         }
 
-        // GET: Tables/Delete/5
+        // GET: Admin/Booking/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +134,7 @@ namespace Pantus.Controllers
             return View(tbTable);
         }
 
-        // POST: Tables/Delete/5
+        // POST: Admin/Booking/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
