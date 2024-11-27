@@ -1,0 +1,52 @@
+﻿@model Pantus.Models.TbTable
+
+@{
+    ViewData["Title"] = "Xóa Bàn Đặt";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4 text-light">
+    <h1 class="h3 text-center mb-4">@ViewData["Title"]</h1>
+
+    <h3 class="text-warning text-center">Bạn có chắc chắn muốn xóa bàn đặt này?</h3>
+    <div class="mt-4">
+        <h4>Thông Tin Bàn</h4>
+        <hr />
+        <dl class="row text-danger">
+            <dt class="col-sm-4">Số Bàn</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TableNumber)</dd>
+
+            <dt class="col-sm-4">Sức Chứa</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Capacity)</dd>
+
+            <dt class="col-sm-4">Trạng Thái</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Status)</dd>
+
+            <dt class="col-sm-4">Hoạt Động</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.IsActive)</dd>
+
+            <dt class="col-sm-4">Họ và Tên</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.FullName)</dd>
+
+            <dt class="col-sm-4">Số Điện Thoại</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Phone)</dd>
+
+            <dt class="col-sm-4">Số Lượng Khách</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.People)</dd>
+
+            <dt class="col-sm-4">Ngày Đặt</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.CreateDate)</dd>
+
+            <dt class="col-sm-4">Giờ Đặt</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Hour)</dd>
+        </dl>
+
+        <form asp-action="Delete" class="mt-4">
+            <input type="hidden" asp-for="TableId" />
+            <div class="d-flex justify-content-center">
+                <input type="submit" value="Xóa" class="btn btn-danger me-3" />
+                <a asp-action="Index" class="btn btn-secondary">Quay Lại</a>
+            </div>
+        </form>
+    </div>
+</div>

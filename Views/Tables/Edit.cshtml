@@ -1,0 +1,100 @@
+﻿@model Pantus.Models.TbTable
+
+@{
+    ViewData["Title"] = "Tạo Bàn Đặt Mới";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center text-primary">Sửa Bàn Đặt</h1>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <form asp-action="Create" class="form-horizontal">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group row">
+                <label asp-for="TableNumber" class="col-sm-3 col-form-label text-right text-danger">Số Bàn</label>
+                <div class="col-sm-9">
+                    <input asp-for="TableNumber" class="form-control" />
+                    <span asp-validation-for="TableNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Capacity" class="col-sm-3 col-form-label text-right text-danger">Sức Chứa</label>
+                <div class="col-sm-9">
+                    <input asp-for="Capacity" class="form-control" />
+                    <span asp-validation-for="Capacity" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Status" class="col-sm-3 col-form-label text-right text-danger">Trạng Thái</label>
+                <div class="col-sm-9">
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="IsActive" />
+                        <label class="form-check-label text-danger" asp-for="IsActive">Kích Hoạt</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="FullName" class="col-sm-3 col-form-label text-right text-danger">Họ và Tên</label>
+                <div class="col-sm-9">
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Phone" class="col-sm-3 col-form-label text-right text-danger">Số Điện Thoại</label>
+                <div class="col-sm-9">
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="People" class="col-sm-3 col-form-label text-right text-danger">Số Người</label>
+                <div class="col-sm-9">
+                    <input asp-for="People" class="form-control" />
+                    <span asp-validation-for="People" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="CreateDate" class="col-sm-3 col-form-label text-right text-danger">Ngày Tạo</label>
+                <div class="col-sm-9">
+                    <input asp-for="CreateDate" class="form-control" />
+                    <span asp-validation-for="CreateDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Hour" class="col-sm-3 col-form-label text-right text-danger">Giờ</label>
+                <div class="col-sm-9">
+                    <input asp-for="Hour" class="form-control" />
+                    <span asp-validation-for="Hour" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <input type="submit" value="Tạo" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Quay lại danh sách</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

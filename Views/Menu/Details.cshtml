@@ -163,14 +163,14 @@
                 let _phone = $("#c_phone").val();
                 let _rating = $("#c_rating").val();
                 let _message = $("#c_message").val();
-                let _menuid = $("#c_menuid").val();  // Lấy giá trị blogId từ input ẩn
+                let _menuid = $("#c_menuid").val();  
 
                 // Gửi dữ liệu qua AJAX
                 $.ajax({
                     url: "/Menu/Create", // URL endpoint trong Controller
                     type: "POST",           // Phương thức POST
                     data: {
-                        menuid: _menuid,  // Gửi thêm blogId vào controller
+                        menuid: _menuid,  
                         name: _name,
                         phone: _phone,
                         rating: _rating,

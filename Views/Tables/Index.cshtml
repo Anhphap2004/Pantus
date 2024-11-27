@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Pantus.Models.TbTable>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 text-center" style="font-family: cursive">Danh Sách Bàn Đặt</h1>
+        <a asp-action="Create" class="btn btn-primary">Tạo Bàn Đặt</a>
+    </div>
+
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>STT</th>
+                <th>Số Bàn</th>
+                <th>Họ Tên</th>
+                <th>Số Điện Thoại</th>
+                <th>Số Lượng Khách</th>
+                <th>Ngày Đặt</th>
+                <th>Giờ Đến</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var p = 1;
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(p++)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TableNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                    <td>@Html.DisplayFor(modelItem => item.People)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CreateDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Hour)</td>
+                    <td>
+                        <div class="btn-group">
+                            <a asp-action="Edit" asp-route-id="@item.TableId" class="btn btn-sm btn-warning me-2">Sửa</a>
+                            <a asp-action="Details" asp-route-id="@item.TableId" class="btn btn-sm btn-info text-white me-2">Chi Tiết</a>
+                            <a asp-action="Delete" asp-route-id="@item.TableId" class="btn btn-sm btn-danger">Xóa</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
