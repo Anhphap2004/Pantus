@@ -51,7 +51,7 @@ namespace Pantus.Controllers
                 // Tạo đối tượng bình luận mới
                 TbMenuReview contact = new TbMenuReview
                 {
-                    MenuItemId = menuid, // Gán BlogId
+                    MenuItemId = menuid, 
                     Name = name,
                     Phone = phone,
                     Rating = rating,

@@ -16,6 +16,7 @@ namespace Pantus.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.phapcomment = _context.TbMenuReviews.ToList();
             ViewBag.MenuCategories = _context.TbMenuCategories.ToList();
            return View();
         }
@@ -36,6 +37,7 @@ namespace Pantus.Controllers
        
         public IActionResult Services()
         {
+            ViewBag.phapcomment = _context.TbMenuReviews.Where(b => b.IsActive).ToList();
             ViewBag.Services = _context.TbServices.ToList();
             return View();
         }

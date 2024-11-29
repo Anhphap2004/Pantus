@@ -25,8 +25,8 @@ namespace Pantus.Areas.Admin.Controllers
                 return NotFound();
             }
             var check = _context.TbAccounts
-    .Where(m => m.Email == user.Email || m.Username == user.Username)
-    .FirstOrDefault();
+             .Where(m => m.Email == user.Email || m.Username == user.Username)
+               .FirstOrDefault();
 
             if (check != null)
             {
