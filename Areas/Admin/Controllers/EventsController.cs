@@ -22,16 +22,12 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Events
         public async Task<IActionResult> Index()
         {
-            if (!Function.IsLogin())
-                return RedirectToAction("Index", "Login");
             return View(await _context.TbEvents.ToListAsync());
         }
 
         // GET: Admin/Events/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (!Function.IsLogin())
-                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -50,8 +46,6 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Events/Create
         public IActionResult Create()
         {
-            if (!Function.IsLogin())
-                return RedirectToAction("Index", "Login");
             return View();
         }
 
@@ -62,8 +56,7 @@ namespace Pantus.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EventId,Title,Description,Location,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsActive,Image,Details")] TbEvent tbEvent)
         {
-            if (!Function.IsLogin())
-                return RedirectToAction("Index", "Login");
+            
             if (ModelState.IsValid)
             {
                 _context.Add(tbEvent);
@@ -76,8 +69,7 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Events/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (!Function.IsLogin())
-                return RedirectToAction("Index", "Login");
+            
             if (id == null)
             {
                 return NotFound();
@@ -98,8 +90,7 @@ namespace Pantus.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("EventId,Title,Description,Location,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsActive,Image,Details")] TbEvent tbEvent)
         {
-            if (!Function.IsLogin())
-                return RedirectToAction("Index", "Login");
+            
             if (id != tbEvent.EventId)
             {
                 return NotFound();
@@ -131,8 +122,7 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Events/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (!Function.IsLogin())
-                return RedirectToAction("Index", "Login");
+           
             if (id == null)
             {
                 return NotFound();

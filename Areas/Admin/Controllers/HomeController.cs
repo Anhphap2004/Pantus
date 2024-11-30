@@ -17,7 +17,7 @@ namespace Pantus.Areas.Admin.Controllers
         public IActionResult Index()
         {
 
-            if (!Function.IsLogin())
+            if (!Function.CanAccessAdminPage())
                 return RedirectToAction("Index", "Login");
             return View();
         }

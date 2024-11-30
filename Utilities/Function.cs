@@ -48,11 +48,36 @@ namespace Pantus.Utilities
             }
             return str;
         }
-        public static bool IsLogin()
+        public static bool IsUserLoggedIn()
         {
-            if(string.IsNullOrEmpty(Function._Username) || string.IsNullOrEmpty(Function._Email) || (Function._AccountId <= 0))
-                return false;
-            return true;
+            return !string.IsNullOrEmpty(Function._Username) &&
+                   !string.IsNullOrEmpty(Function._Email) &&
+                   Function._AccountId > 0 &&
+                   Function._RoleId == 2; // Kiểm tra nếu là tài khoản người dùng
         }
+
+        public static bool IsAdminLoggedIn()
+        {
+            return !string.IsNullOrEmpty(Function._Username) &&
+                   !string.IsNullOrEmpty(Function._Email) &&
+                   Function._AccountId > 0 &&
+                   Function._RoleId == 1; // Kiểm tra nếu là tài khoản admin
+        }
+
+        public static bool CanAccessAdminPage()
+        {
+            if (IsAdminLoggedIn())
+            {
+                return true; // Tài khoản admin đã đăng nhập
+            }
+            else if (IsUserLoggedIn())
+            {
+                // Nếu là tài khoản người dùng, yêu cầu đăng nhập admin
+                // Bạn có thể chuyển hướng người dùng đến trang đăng nhập admin
+                return false;
+            }
+            return false; // Không đăng nhập
+        }
+
     }
 }

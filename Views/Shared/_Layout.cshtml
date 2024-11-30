@@ -38,11 +38,22 @@
         <canvas class='star'></canvas>
     </div> *@
 
-    <audio autoplay>
+	<audio id="audioPlayer" autoplay>
+		<source src="/assets/Zing/ngaytetphap.mp3" type="audio/mp3">
         <source src="/assets/Zing/phaptet.mp3" type="audio/mp3">
-        <source src="/assets/Zing/ngaytetphap.mp3" type="audio/mp3">
-      
+
     </audio>
+
+    <script>
+        var audioPlayer = document.getElementById('audioPlayer');
+
+        // Khi bài đầu tiên kết thúc, chuyển sang bài thứ 2
+        audioPlayer.addEventListener('ended', function() {
+            var nextTrack = '/assets/Zing/phaptet.mp3'; // Đường dẫn bài hát thứ 2
+            audioPlayer.src = nextTrack;
+            audioPlayer.play(); // Tiến hành phát bài thứ 2
+        });
+    </script>
 
 
     <div>

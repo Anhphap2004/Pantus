@@ -3,11 +3,11 @@
 @foreach(var p in Model)
 {
     <div class="col-lg-3 col-md text-center mb-3">
-        <div class="service_first pb-5 pt-3 rounded-top-3">
+        <div class="pb-5 pt-3 rounded-top-3" style="background-color: #c83d40">
             <div class="icon_parent">
                 <i class="@p.Icon icon_child"></i>
             </div>
-            <div class="mt-3 text-danger" style="font-size:20px; font-weight: bold">@p.Title</div>
+            <div class="mt-3 text-white" style="font-size:20px; font-weight: bold">@p.Title</div>
         </div>
         <img class="size_img" src="@p.Image" alt="Birthday">
     </div>

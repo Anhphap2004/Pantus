@@ -23,8 +23,7 @@ namespace Pantus.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
 
-            if (!Function.IsLogin())
-                return RedirectToAction("Index", "Login");
+         
             return View(await _context.TbContacts.ToListAsync());
         }
 
