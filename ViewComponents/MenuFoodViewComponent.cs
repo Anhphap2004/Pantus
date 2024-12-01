@@ -27,8 +27,9 @@ namespace Pantus.ViewComponents
             var products = categoryId == null
                 ? await _context.TbMenuItems.ToListAsync()
                 : await _context.TbMenuItems.Where(p => p.CategoryId == categoryId).ToListAsync();
-
             return View(products);
         }
+
+        
     }
 }

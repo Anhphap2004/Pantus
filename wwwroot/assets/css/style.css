@@ -359,7 +359,7 @@ body {
 }
 .AnhhPhapp-p-left {
     position: absolute;
-    top: 3400px;
+    top: 3300px;
     left: 90px;
     z-index: 9999;
     pointer-events: none;
@@ -367,7 +367,7 @@ body {
 
 .AnhhPhapp-n-right {
     position: absolute;
-    top: 3300px;
+    top: 3200px;
     right: 0;
     z-index: 9999;
     pointer-events: none;
