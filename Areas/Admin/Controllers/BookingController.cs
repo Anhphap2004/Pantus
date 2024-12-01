@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pantus.Models;
-
+using Pantus.Utilities;
 namespace Pantus.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -22,12 +22,16 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Booking
         public async Task<IActionResult> Index()
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             return View(await _context.TbTables.ToListAsync());
         }
 
         // GET: Admin/Booking/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -46,6 +50,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Booking/Create
         public IActionResult Create()
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             return View();
         }
 
@@ -88,6 +94,8 @@ namespace Pantus.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("TableId,TableNumber,Capacity,Status,IsActive,FullName,Phone,People,CreateDate,Hour")] TbTable tbTable)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id != tbTable.TableId)
             {
                 return NotFound();

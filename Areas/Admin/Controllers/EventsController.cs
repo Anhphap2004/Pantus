@@ -22,12 +22,16 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Events
         public async Task<IActionResult> Index()
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             return View(await _context.TbEvents.ToListAsync());
         }
 
         // GET: Admin/Events/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -46,6 +50,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Events/Create
         public IActionResult Create()
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             return View();
         }
 
@@ -69,7 +75,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Events/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -122,7 +129,9 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Events/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-           
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
+
             if (id == null)
             {
                 return NotFound();

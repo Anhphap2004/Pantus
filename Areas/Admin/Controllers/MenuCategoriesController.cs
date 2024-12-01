@@ -23,13 +23,16 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuCategories
         public async Task<IActionResult> Index()
         {
-          
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             return View(await _context.TbMenuCategories.ToListAsync());
         }
 
         // GET: Admin/MenuCategories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -48,6 +51,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuCategories/Create
         public IActionResult Create()
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             return View();
         }
 
@@ -70,6 +75,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuCategories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -121,6 +128,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuCategories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();

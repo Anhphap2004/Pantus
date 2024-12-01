@@ -24,7 +24,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuDish
         public async Task<IActionResult> Index()
         {
-          
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             var pantusContext = _context.TbMenuItems.Include(t => t.Category);
             return View(await pantusContext.ToListAsync());
         }
@@ -32,7 +33,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuDish/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-           
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -52,7 +54,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuDish/Create
         public IActionResult Create()
         {
-            
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             ViewData["CategoryId"] = new SelectList(_context.TbMenuCategories, "CategoryId", "Title");
             return View();
         }
@@ -82,7 +85,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuDish/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-           
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -137,7 +141,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/MenuDish/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-           
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();

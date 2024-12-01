@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pantus.Models;
-
+using Pantus.Utilities;
 namespace Pantus.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -22,6 +22,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Accounts
         public async Task<IActionResult> Index()
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             var pantusContext = _context.TbAccounts.Include(t => t.Role);
             return View(await pantusContext.ToListAsync());
         }
@@ -29,6 +31,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Accounts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -61,6 +65,8 @@ namespace Pantus.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("AccountId,Username,Password,FullName,Phone,Email,RoleId,LastLogin,Image,IsActive")] TbAccount tbAccount)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (ModelState.IsValid)
             {
                 _context.Add(tbAccount);
@@ -73,22 +79,24 @@ namespace Pantus.Areas.Admin.Controllers
 
         // GET: Admin/Accounts/Edit/5
         public async Task<IActionResult> Edit(int? id)
-{
-    if (id == null)
-    {
-        return NotFound();
-    }
+        {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-    var tbAccount = await _context.TbAccounts.FindAsync(id);
-    if (tbAccount == null)
-    {
-        return NotFound();
-    }
+            var tbAccount = await _context.TbAccounts.FindAsync(id);
+            if (tbAccount == null)
+            {
+                return NotFound();
+            }
 
-    // Tạo SelectList với RoleName thay vì RoleId
-    ViewData["RoleId"] = new SelectList(_context.TbRoles, "RoleId", "RoleName", tbAccount.RoleId);
-    return View(tbAccount);
-}
+            // Tạo SelectList với RoleName thay vì RoleId
+            ViewData["RoleId"] = new SelectList(_context.TbRoles, "RoleId", "RoleName", tbAccount.RoleId);
+            return View(tbAccount);
+        }
 
 
         // POST: Admin/Accounts/Edit/5
@@ -130,6 +138,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Accounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();

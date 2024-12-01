@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Pantus.Models;
-
+using Pantus.Utilities;
 namespace Pantus.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -22,6 +22,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Blogs
         public async Task<IActionResult> Index()
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             var pantusContext = _context.TbBlogs.Include(t => t.Account).Include(t => t.Category);
             return View(await pantusContext.ToListAsync());
         }
@@ -29,6 +31,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Blogs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -49,6 +53,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Blogs/Create
         public IActionResult Create()
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             ViewData["AccountId"] = new SelectList(_context.TbAccounts, "AccountId", "AccountId");
             ViewData["CategoryId"] = new SelectList(_context.TbBlogCategories, "CategoryId", "CategoryId");
             return View();
@@ -75,6 +81,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Blogs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -130,6 +138,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Blogs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();

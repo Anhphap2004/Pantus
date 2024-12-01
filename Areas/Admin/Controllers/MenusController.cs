@@ -22,14 +22,16 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Menus
         public async Task<IActionResult> Index()
         {
-         
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             return View(await _context.TbMenus.ToListAsync());
         }
 
         // GET: Admin/Menus/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-           
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
@@ -59,7 +61,8 @@ namespace Pantus.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MenuId,Title,Alias,Description,Levels,ParentId,Position,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsActive")] TbMenu tbMenu)
         {
-           
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (ModelState.IsValid)
             {
                 tbMenu.Alias = Pantus.Utilities.Function.TitleSlugGenerationAlias(tbMenu.Title);
@@ -73,7 +76,8 @@ namespace Pantus.Areas.Admin.Controllers
         // GET: Admin/Menus/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-           
+            if (!Function.CanAccessAdminPage())
+                return RedirectToAction("Index", "Login");
             if (id == null)
             {
                 return NotFound();
