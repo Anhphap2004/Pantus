@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Pantus.Models.TbService>
+
+@{
+    ViewData["Title"] = "Quản lý dịch vụ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center my-4">@ViewData["Title"]</h1>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-primary">Thêm Dịch Vụ Mới</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th class="text-center">STT</th>
+            <th>Tiêu Đề</th>
+            <th>Hình Ảnh</th>
+            <th>Icon</th>
+            <th class="text-center">Trạng Thái</th>
+            <th class="text-center">Thao Tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">@index</td>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>
+                        <img src="@item.Image" alt="@item.Title" style="width: 60px; height: auto; border-radius: 5px;" />
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Icon)</td>
+                    <td class="text-center">
+                        @if (item.IsActive)
+                        {
+                            <span class="badge bg-success">Hoạt động</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Không hoạt động</span>
+                        }
+                    </td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.ServiceId" class="btn btn-sm btn-warning me-2">Sửa</a>
+                        <a asp-action="Details" asp-route-id="@item.ServiceId" class="btn btn-sm btn-info me-2">Chi Tiết</a>
+                        <a asp-action="Delete" asp-route-id="@item.ServiceId" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+                index++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center text-muted">Không có dịch vụ nào được tìm thấy.</td>
+            </tr>
+        }
+    </tbody>
+</table>

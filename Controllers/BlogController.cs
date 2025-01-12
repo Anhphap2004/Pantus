@@ -56,7 +56,7 @@ namespace Pantus.Controllers
                     Detail = message,
                     CreatedDate = DateTime.Now,
                     IsActive = true,
-                    Image = "thuyngan.jpg",
+                    Image = "havi.jpg",
                 };
 
                 // Thêm vào cơ sở dữ liệu

@@ -16,8 +16,9 @@ namespace Pantus.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.phapcomment = _context.TbMenuReviews.ToList();
-            ViewBag.MenuCategories = _context.TbMenuCategories.ToList();
+              
+                ViewBag.phapcomment = _context.TbMenuReviews.ToList();
+            ViewBag.MenuCategories = _context.TbMenuCategories.ToList();  
            return View();
         }
         public IActionResult Blog()
@@ -63,6 +64,7 @@ namespace Pantus.Controllers
             Function._FullName = string.Empty;
             Function._Phone = string.Empty;
             return Task.FromResult<IActionResult>(RedirectToAction("Index", "Home"));
+           
         }
         
     }

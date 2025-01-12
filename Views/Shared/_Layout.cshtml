@@ -103,7 +103,7 @@
                     <!-- Nút Hồ Sơ Người Dùng với hình ảnh và style inline -->
                     <div class="dropdown d-inline-block" style="position: relative;">
                         <!-- Nút Đăng Nhập nếu chưa đăng nhập -->
-                        @if(Function._Username == string.Empty)
+                        @if(Function._Username == string.Empty || Function._RoleId == 1)
                         { 
                             <div id="loginBtn" style="display: block;">
                                 <a href="~/Admin/login/Index" class="btn btn-primary">Đăng Nhập </a>
