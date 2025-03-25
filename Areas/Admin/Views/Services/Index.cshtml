@@ -36,7 +36,10 @@
                     <td>
                         <img src="@item.Image" alt="@item.Title" style="width: 60px; height: auto; border-radius: 5px;" />
                     </td>
-                    <td>@Html.DisplayFor(modelItem => item.Icon)</td>
+                    <td>
+                        <i class="@Html.DisplayFor(modelItem => item.Icon)" style="font-size: 30px; color: brown;"></i>
+
+                        </td>
                     <td class="text-center">
                         @if (item.IsActive)
                         {

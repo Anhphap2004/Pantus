@@ -19,12 +19,12 @@
                     @foreach (var p in MenuRelated)
                     {
                         <img src="@p.Image" alt="Hình Ảnh Món Ăn">
-
                     }
-
                 </div>
             </div>
-
+            @* ViewBag.MenuCategories chứa một danh sách các danh mục menu (List<TbMenuCategory> *@
+            @*     ) mà controller đã truyền đến view. *@
+            @*     Dữ liệu từ ViewBag được ép kiểu (cast) về đúng kiểu dữ liệu List<TbMenuCategory> *@   
             <div class="product-info">
                 <!-- Tên món ăn -->
                 <h2 class="product-title">@Model.Title</h2>

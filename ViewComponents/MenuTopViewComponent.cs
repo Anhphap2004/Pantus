@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Pantus.ViewComponents
 {
-    public class MenuTopViewComponent : ViewComponent
+    public class MenuTopViewComponent : ViewComponent //Lớp MenuTopViewComponent kế thừa từ ViewComponent.
     {
         private readonly PantusContext _context;
 

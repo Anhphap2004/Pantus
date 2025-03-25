@@ -56,7 +56,7 @@ namespace Pantus.Areas.Admin.Controllers
             if (!Function.CanAccessAdminPage())
                 return RedirectToAction("Index", "Login");
             ViewData["AccountId"] = new SelectList(_context.TbAccounts, "AccountId", "AccountId");
-            ViewData["CategoryId"] = new SelectList(_context.TbBlogCategories, "CategoryId", "CategoryId");
+            ViewData["CategoryId"] = new SelectList(_context.TbBlogCategories, "CategoryId", "Title");
             return View();
         }
 
@@ -94,7 +94,7 @@ namespace Pantus.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["AccountId"] = new SelectList(_context.TbAccounts, "AccountId", "AccountId", tbBlog.AccountId);
-            ViewData["CategoryId"] = new SelectList(_context.TbBlogCategories, "CategoryId", "CategoryId", tbBlog.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.TbBlogCategories, "CategoryId", "Title", tbBlog.CategoryId);
             return View(tbBlog);
         }
 

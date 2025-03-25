@@ -7,13 +7,13 @@
             string sUrl = $"/menu/{p.Alias}-{p.MenuItemId}.html";
 
             <div class="col-lg-3 col-md-4 col-sm-6 wow bounceInUp mb-4" data-wow-delay="0.1s">
-                <div class="menu-item text-center p-4 border rounded shadow">
+                <div class="menu-item text-center p-4 border rounded shadowz">
                     <!-- Hình ảnh lớn, hình vuông với bo góc -->
                     <a href="@sUrl">
                         <img class="img-fluid mb-3 rounded-3" src="@p.Image" alt="@p.Title"
                              style="width: 250px; height: 200px; object-fit: cover;">
                     </a>
-
+                    @* <div class="row d-flex flex-nowrap overflow-auto"> *@
                     <!-- Nội dung tiêu đề -->
                     <div class="w-100">
                         <h5 class="fw-bold text-dark mb-2">@p.Title</h5>
